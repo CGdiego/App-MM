@@ -8,9 +8,6 @@ void telaInicial() {
   float larguraTela = 1280; 
   float alturaTela = 720;
   
-  // ==========================================
-  // TELA BRANCA CENTRALIZADA
-  // ==========================================
   float largPainel = 500;
   float altPainel = 600;
   float xPainel = (larguraTela - largPainel) / 2; // Centraliza X
