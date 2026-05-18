@@ -1,5 +1,5 @@
-float xp = 0
-float yp = 0
+float xp = 0;
+float yp = 0;
 
 void telaInicial() {
   background(200); // Fundo cinza para destacar a tela branca
