@@ -4,7 +4,7 @@ Problema: Crianças entre 7 e 10 anos estão cada vez mais expostas a golpes dig
 
 Objetivo: Ajudar o aluno a reconhecer os principais sinais de uma mensagem falsa, como links com erros de escrita, pedidos urgentes de dados pessoais e remetentes desconhecidos.
 
-O que o estudante fará: Durante o jogo, o aluno vai receber mensagens simuladas e decidir se deve confiar nelas ou descartá-las e denunciá-las. A ideia é que ele aprenda na prática, errando e recebendo explicações na hora.
+O que o estudante fará: Durante o jogo, o aluno vai receber mensagens simuladas e decidir se deve confiar nelas ou descartá-las e denunciá-las. A ideia é que ele aprenda na prática, contando com dicas de apoio em cada rodada para não se sentir perdido.
 
 Uso: O jogo serve como atividade de prática e fixação de conceitos de cidadania digital, podendo ser usado tanto em aula quanto de forma autônoma.
 
@@ -32,9 +32,11 @@ Conceitos centrais: URL suspeita, remetente desconhecido e solicitações de dad
 
 **4. Estrutura Didática**
 
-Sequência: O jogo funciona de forma exploratória. As mensagens aparecem em ordem aleatória para que o aluno não consiga decorar a sequência.
+Sequência: O jogo é composto por 10 perguntas apresentadas de forma exploratória. Se o aluno errar qualquer uma delas, volta ao início e recomeça do zero, o que reforça a atenção em cada decisão tomada.
 
-Feedback: Imediato. Quando o aluno erra, o jogo explica o motivo daquela mensagem ser um golpe, apontando exatamente o detalhe que deveria ter chamado atenção, como um link escrito de forma estranha ou um pedido de senha fora de contexto.
+Feedback: Em cada tela de pergunta há uma dica visível para auxiliar o aluno na análise da mensagem. Ao errar, o jogo explica o motivo daquela mensagem ser um golpe, apontando o detalhe que deveria ter chamado atenção.
+
+Recompensa: Ao responder as 10 perguntas corretamente, o aluno é levado a uma tela de vitória e desbloqueia um jogo bônus como recompensa por completar o desafio sem erros.
 
 Tempo: Cada sessão deve durar entre 10 e 15 minutos, o que cabe bem numa aula ou num intervalo maior.
 
@@ -44,27 +46,27 @@ Tempo: Cada sessão deve durar entre 10 e 15 minutos, o que cabe bem numa aula o
 
 Tipo de interação: O aluno clica ou toca em botões para tomar sua decisão em cada mensagem recebida.
 
-Interface: A tela simula um celular na vertical, parecida com a interface de um aplicativo de SMS ou WhatsApp, para que o contexto seja familiar.
+Interface: O jogo começa com uma tela inicial animada, com música e personagens que introduzem o contexto de forma lúdica e convidativa. Em seguida, a tela simula um celular na vertical, parecida com a interface de um aplicativo de SMS ou WhatsApp, para que o ambiente seja familiar.
 
-Gamificação: Existe um sistema de pontuação visível e uma barra de progresso para que o aluno acompanhe seu desempenho. Ao chegar a 20 pontos, ele recebe uma medalha virtual, como a de "Detetive Digital".
+Gamificação: A estrutura de "acerte tudo ou recomece" cria tensão positiva e engajamento. A tela de vitória e o jogo bônus funcionam como motivação para que o aluno queira completar o desafio com atenção do início ao fim.
 
 ---
 
 **6. Avaliação**
 
-Verificação: A avaliação é quantitativa, baseada no número de acertos.
+Verificação: A avaliação é quantitativa, baseada na sequência completa de acertos.
 
-Critério de sucesso: Atingir 20 acertos.
+Critério de sucesso: Responder corretamente as 10 perguntas sem errar nenhuma.
 
-Feedback final: Ao terminar, o jogo mostra um resumo com os tipos de golpe em que o aluno mais errou. Assim ele sai sabendo exatamente onde precisa prestar mais atenção na vida real, o que torna o aprendizado mais útil do que só ver a pontuação final.
+Feedback final: A tela de vitória marca a conclusão do desafio e o acesso ao jogo bônus indica que o aluno demonstrou domínio suficiente para identificar os golpes apresentados.
 
 ---
 
 **7. Tecnologia**
 
-O jogo será desenvolvido em Processing (Java). Para organizar as mensagens, será usada uma ArrayList de objetos da classe Mensagem, contendo o texto, o tipo de golpe e a indicação se é fraude ou não. O estado do jogo será controlado por uma variável int tela, alternando entre menu (0), jogo (1) e feedback/game over (2). Os balões de mensagem serão desenhados com rect() de cantos arredondados para imitar visualmente a interface de conversas de SMS.
+O jogo será desenvolvido em Processing (Java). Para organizar as mensagens, será usada uma ArrayList de objetos da classe Mensagem, contendo o texto, o tipo de golpe, a dica de apoio e a indicação se é fraude ou não. O estado do jogo será controlado por uma variável int tela, alternando entre tela inicial (0), jogo (1), feedback de erro e reinício (2), vitória (3) e jogo bônus (4). A música da tela inicial será reproduzida via Minim ou recurso equivalente disponível no Processing. Os balões de mensagem serão desenhados com rect() de cantos arredondados para imitar visualmente a interface de conversas de SMS.
 
 ---
 
 **Pergunta-síntese:**
-"Crianças de 7 a 10 anos aprendem a identificar phishing por meio de uma simulação de mensagens de texto, jogando por cerca de 10 minutos com interação de tomada de decisão, evidenciando o aprendizado ao atingir 20 acertos no placar final."
+"Crianças de 7 a 10 anos aprendem a identificar phishing por meio de uma simulação de mensagens de texto com 10 perguntas sequenciais, contando com dicas em cada rodada e precisando acertar tudo sem errar para desbloquear a tela de vitória e um jogo bônus, evidenciando o aprendizado pela conclusão completa do desafio."
