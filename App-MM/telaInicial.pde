@@ -6,7 +6,7 @@ float bX = 200, bY = 300; // Esse é pro Robô do Reddit
 void telaInicial() {
   background(180); // Fundo cinza para destacar a tela branca
   
-  // Supomos que o tamanho da tela seja 1280x720 no setup
+  // Tamanho da tela 1280x720
   float larguraTela = 1280; 
   float alturaTela = 720;
   
@@ -28,7 +28,7 @@ void telaInicial() {
   text("BEM-VINDO AO", larguraTela / 2, yPainel + 80);
   
   // Nome do Jogo
-  fill(0, 220, 0); // Vermelho em destaque (estilo Mario)
+  fill(220, 0, 0); // Vermelho
   textSize(36);
   text("NUWS", larguraTela / 2, yPainel + 160);
   
@@ -51,7 +51,7 @@ void telaInicial() {
   rect(xBotao, yBotao, largBotao, altBotao, 10); // Botão arredondado
   
   // Texto do Botão
-  fill(255); // Letras brancas
+  fill(255); // Branco
   textSize(20);
   text("JOGAR", larguraTela / 2, yBotao + (altBotao / 2) - 2); 
   
