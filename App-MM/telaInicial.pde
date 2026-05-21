@@ -1,3 +1,5 @@
+// Feito por Lucas e Diego
+
 float xp = 0, yp = 0; // Para alterar a posição dos personagens
 float bX = 200, bY = 300; // Esse é pro Robô do Reddit
 
@@ -20,23 +22,23 @@ void telaInicial() {
 
   textAlign(CENTER, CENTER);
   
-  // 1. Mensagem de Bem-vindo
+  // Mensagem de Bem-vindo
   fill(80); // Cinza escuro
   textSize(22);
   text("BEM-VINDO AO", larguraTela / 2, yPainel + 80);
   
-  // 2. Nome do Jogo
+  // Nome do Jogo
   fill(0, 220, 0); // Vermelho em destaque (estilo Mario)
   textSize(36);
   text("NUWS", larguraTela / 2, yPainel + 160);
   
-  // 3. Intro
+  // Intro
   fill(0);
   textSize(20);
   text("Aqui você aprenderá sobre", larguraTela / 2, yPainel + 220);
   text("como não cair em golpes online", larguraTela / 2, yPainel + 240);
   
-  // 4. Botão para Começar o Jogo
+  // Botão para Começar o Jogo
   float largBotao = 220;
   float altBotao = 55;
   float xBotao = (larguraTela - largBotao) / 2;
@@ -53,11 +55,11 @@ void telaInicial() {
   textSize(20);
   text("JOGAR", larguraTela / 2, yBotao + (altBotao / 2) - 2); 
   
-  // Redefine as configurações padrão de traço para não afetar os personagens
+  // Reseta as configurações padrão de traço
   stroke(0);
   strokeWeight(1);
   
-  // Definindo as margens X das colunas para simetria
+  // Define as margens X das colunas para simetria
   float colunaEsquerdaX = xPainel / 2; // Centralizado no espaço à esquerda
   float colunaDireitaX = larguraTela - (xPainel / 2); // Centralizado no espaço à direita
 
