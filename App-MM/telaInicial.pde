@@ -71,6 +71,8 @@ void telaInicial() {
   fill(0, 255, 0); stroke(0); strokeWeight(5);
   rect(xp+174, yp+250, 130, 300);
   rect(xp+128, yp+80, 220, 220);
+  rect(xp+128, yp+500, 70, 100);
+  rect(xp+276, yp+500, 70, 100);
   fill(0); stroke(0);
   rect(xp+155, yp+128, 60, 60);
   rect(xp+260, yp+128, 60, 60);
