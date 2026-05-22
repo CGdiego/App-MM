@@ -1,14 +1,6 @@
-//Feito por Gustavo Gomes
+// Feito por Gustavo Gomes
 
-
-float xp = 0;
-float yp = 0;
-
-void setup() {
-  size(1366,768);
-}
-
-void draw() {
+void p01() {
 
 // FUNDO AZUL
   background(0,120,255);
