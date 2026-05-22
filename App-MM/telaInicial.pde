@@ -1,73 +1,50 @@
-// Feito por Lucas e Diego
+float xp = 0, yp = 0;
+float bX = 200, bY = 300;
 
-float xp = 0, yp = 0; // Para alterar a posição dos personagens
-float bX = 200, bY = 300; // Esse é pro Robô do Reddit
+color corBotao;
+color verde     = color(0, 200, 80);
+color verdeEscuro = color(0, 120, 40);
 
 void telaInicial() {
-  background(180); // Fundo cinza para destacar a tela branca
-  
-  // Tamanho da tela 1280x720
-  float larguraTela = 1280; 
-  float alturaTela = 720;
-  
-  float largPainel = 500;
-  float altPainel = 600;
-  float xPainel = (larguraTela - largPainel) / 2; // Centraliza X
-  float yPainel = (alturaTela - altPainel) / 2;   // Centraliza Y
-  
+  background(180);
+
   fill(255);
   stroke(0,255,0);
   strokeWeight(5);
-  rect(xPainel, yPainel, largPainel, altPainel, 15); // Tela branca com cantos arredondados
+  rect(390, 60, 500, 600, 15);
 
   textAlign(CENTER, CENTER);
   
-  // Mensagem de Bem-vindo
-  fill(80); // Cinza escuro
+  fill(80);
   textSize(22);
-  text("BEM-VINDO AO", larguraTela / 2, yPainel + 80);
+  text("BEM-VINDO AO", 640, 140);
   
-  // Nome do Jogo
-  fill(220, 0, 0); // Vermelho
+  fill(220, 0, 0);
   textSize(36);
-  text("NUWS", larguraTela / 2, yPainel + 160);
+  text("NUWS", 640, 220);
   
-  // Intro
   fill(0);
   textSize(20);
-  text("Aqui você aprenderá sobre", larguraTela / 2, yPainel + 220);
-  text("como não cair em golpes online", larguraTela / 2, yPainel + 240);
+  text("Aqui você aprenderá sobre", 640, 280);
+  text("como não cair em golpes online", 640, 300);
   
-  // Botão para Começar o Jogo
-  float largBotao = 220;
-  float altBotao = 55;
-  float xBotao = (larguraTela - largBotao) / 2;
-  float yBotao = yPainel + 420; // Posicionado na parte inferior do painel
-  
-  // Desenho do Botão (Verde)
-  fill(0, 200, 80);
+  fill(corBotao);
   stroke(0, 150, 50);
   strokeWeight(2);
-  rect(xBotao, yBotao, largBotao, altBotao, 10); // Botão arredondado
+  rect(530, 480, 220, 55, 10);
   
-  // Texto do Botão
-  fill(255); // Branco
+  fill(255);
   textSize(20);
-  text("JOGAR", larguraTela / 2, yBotao + (altBotao / 2) - 2); 
+  text("JOGAR", 640, 507);
   
-  // Reseta as configurações padrão de traço
   stroke(0);
   strokeWeight(1);
-  
-  // Define as margens X das colunas para simetria
-  float colunaEsquerdaX = xPainel / 2; // Centralizado no espaço à esquerda
-  float colunaDireitaX = larguraTela - (xPainel / 2); // Centralizado no espaço à direita
 
   // 1. Creeper
   pushMatrix();
-  translate(colunaEsquerdaX-10, 65); 
+  translate(230, 65);
   scale(0.35);
-  translate(-214, 0); 
+  translate(-214, 0);
   fill(0, 255, 0); stroke(0); strokeWeight(5);
   rect(xp+174, yp+250, 130, 300);
   rect(xp+128, yp+80, 220, 220);
@@ -80,10 +57,10 @@ void telaInicial() {
   rect(xp+180, yp+210, 38, 80);
   rect(xp+256, yp+210, 38, 80);
   popMatrix();
-  
+
   // 2. Criatura Azul
   pushMatrix();
-  translate(colunaEsquerdaX, 280); 
+  translate(240, 280);
   scale(0.40);
   translate(-250, 0);
   stroke(0); strokeWeight(10);
@@ -95,10 +72,10 @@ void telaInicial() {
   fill(255, 0, 0); rect(xp+200, yp+285, 100, 50);
   strokeWeight(0); fill(255); rect(xp+205, yp+290, 90, 10);
   popMatrix();
-  
+
   // 3. Mario
   pushMatrix();
-  translate(colunaEsquerdaX, 460); 
+  translate(240, 460);
   scale(0.45);
   translate(-250, 0);
   fill(227, 0, 4); rect(xp+160, yp+80, 180, 40); rect(xp+140, yp+120, 220, 30); rect(xp+190, yp+70, 120, 20);
@@ -115,11 +92,11 @@ void telaInicial() {
   fill(0, 70, 255); rect(xp+200, yp+400, 40, 60); rect(xp+260, yp+400, 40, 60);
   fill(180, 114, 5); rect(xp+190, yp+450, 70, 30); rect(xp+250, yp+450, 70, 30);
   popMatrix();
-  
+
   // 4. Steve
   pushMatrix();
-  translate(colunaDireitaX, 20); 
-  scale(0.45); 
+  translate(1040, 20);
+  scale(0.45);
   translate(-500, 0);
   fill(101, 67, 33); stroke(0); rect(xp+445, yp+140, 110, 60);
   fill(255, 224, 189); rect(xp+435, yp+180, 15, 30); rect(xp+550, yp+180, 15, 30);
@@ -130,11 +107,11 @@ void telaInicial() {
   fill(255, 224, 189); rect(xp+365, yp+250, 60, 200); rect(xp+575, yp+250, 60, 200);
   fill(0, 255, 0); rect(xp+425, yp+450, 60, 120); rect(xp+515, yp+450, 60, 120);
   popMatrix();
-  
+
   // 5. Robô do Reddit
   pushMatrix();
-  translate(colunaDireitaX, 385); 
-  scale(0.70); 
+  translate(1040, 385);
+  scale(0.70);
   translate(-200, -300);
   stroke(0); strokeWeight(2);
   line(bX, bY-80, bX, bY-110);
@@ -149,12 +126,12 @@ void telaInicial() {
   fill(255, 255, 0); ellipse(bX-15, bY, 10, 10);
   fill(0, 255, 0); ellipse(bX+15, bY, 10, 10);
   popMatrix();
-  
+
   // 6. Freddy
   pushMatrix();
-  translate(colunaDireitaX, 600); 
+  translate(1040, 600);
   scale(0.35);
-  translate(-300, -450); 
+  translate(-300, -450);
   fill(139, 69, 19);
   ellipse(xp+300, yp+500, 220, 260);
   ellipse(xp+190, yp+470, 70, 180); ellipse(xp+410, yp+470, 70, 180);
@@ -174,4 +151,15 @@ void telaInicial() {
   rect(xp+250, yp+70, 100, 70, 10);
   fill(200, 0, 0); rect(xp+250, yp+115, 100, 15);
   popMatrix();
+}
+
+void mouseOver(){
+  if (mouseX > 530 && mouseX < 750 && mouseY > 480 && mouseY < 535)
+    corBotao = verdeEscuro;
+  else
+    corBotao = verde;
+}
+
+void mousePressed(){
+  if (mouseX > 530 && mouseX < 750 && mouseY > 480 && mouseY < 535) tela = 1;
 }

@@ -1,3 +1,5 @@
+int tela = 0;
+
 import ddf.minim.*;
 
 Minim minim;
@@ -8,8 +10,10 @@ void setup(){
   minim = new Minim(this);
   player = minim.loadFile("smash_brawl.mp3");
   player.loop();
-  telaInicial();
 }
 
 void draw(){
+  if (tela == 0) { mouseOver(); telaInicial(); }
+  else if (tela == 1) { p01(); }
+  mouseOver();
 }
