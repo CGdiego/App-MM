@@ -13,7 +13,17 @@ void setup(){
 }
 
 void draw(){
-  if (tela == 0) { mouseOver(); telaInicial(); }
-  else if (tela == 1) { p01(); }
-  mouseOver();
+  if (tela == 0) { mouseOverJogar(); telaInicial(); }
+  else if (tela == 1) { p01(); mouseOverSim(); mouseOverNao();}
+  mouseOverJogar();
+}
+
+void mousePressed(){
+  if (tela == 0) {
+    if (mouseX > 530 && mouseX < 750 && mouseY > 480 && mouseY < 535) tela = 1;
+  }
+  else if (tela == 1) {
+    if (mouseX > 450 && mouseX < 630 && mouseY > 500 && mouseY < 580) tela = 2;
+    if (mouseX > 730 && mouseX < 910 && mouseY > 500 && mouseY < 580) tela = 0;
+  }
 }

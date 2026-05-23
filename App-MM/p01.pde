@@ -1,7 +1,9 @@
-// Feito por Gustavo Gomes
+// Feito por Gustavo Gomes e Diego
+
 
 void p01() {
 
+  
 // FUNDO AZUL
   background(0,120,255);
 
@@ -25,7 +27,7 @@ void p01() {
 
   textSize(40);
 
-  text("PERGUNTA 2.", width/2, 180);
+  text("PERGUNTA 1.", width/2, 180);
 
   textSize(28);
 
@@ -37,7 +39,7 @@ void p01() {
 // BOTÃO SIM
 
 
-  fill(0,200,0);
+  fill(corSim);
 
   rect(450,500,180,80,20);
 
@@ -46,16 +48,32 @@ void p01() {
   textSize(32);
 
   text("SIM",540,552);
-
+  
 
 // BOTÃO NÃO
 
 
-  fill(220,0,0);
+  fill(corNao);
 
   rect(730,500,180,80,20);
 
   fill(255);
 
   text("NÃO",820,552);
+}
+
+// BOTÃO PRESSIONADO
+
+void mouseOverSim(){
+  if (mouseX > 450 && mouseX < 630 && mouseY > 500 && mouseY < 580)
+    corSim = verdeSimEscuro;
+  else
+    corSim = verdeSim;
+}
+
+void mouseOverNao(){
+  if (mouseX > 730 && mouseX < 910 && mouseY > 500 && mouseY < 580)
+    corNao = vermelhoNaoEscuro;
+  else
+    corNao = vermelhoNao;
 }

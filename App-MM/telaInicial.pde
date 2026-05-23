@@ -1,9 +1,19 @@
+// Feito por Lucas e Diego
+
 float xp = 0, yp = 0;
 float bX = 200, bY = 300;
 
 color corBotao;
-color verde     = color(0, 200, 80);
-color verdeEscuro = color(0, 120, 40);
+color verde             = color(0, 200, 80);
+color verdeEscuro       = color(0, 120, 40);
+
+color corSim;
+color verdeSim          = color(0, 200, 0);
+color verdeSimEscuro    = color(0, 120, 0);
+
+color corNao;
+color vermelhoNao       = color(220, 0, 0);
+color vermelhoNaoEscuro = color(140, 0, 0);
 
 void telaInicial() {
   background(180);
@@ -153,13 +163,9 @@ void telaInicial() {
   popMatrix();
 }
 
-void mouseOver(){
+void mouseOverJogar(){
   if (mouseX > 530 && mouseX < 750 && mouseY > 480 && mouseY < 535)
     corBotao = verdeEscuro;
   else
     corBotao = verde;
-}
-
-void mousePressed(){
-  if (mouseX > 530 && mouseX < 750 && mouseY > 480 && mouseY < 535) tela = 1;
 }
