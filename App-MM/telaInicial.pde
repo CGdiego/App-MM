@@ -15,6 +15,10 @@ color corNao;
 color vermelhoNao       = color(220, 0, 0);
 color vermelhoNaoEscuro = color(140, 0, 0);
 
+color corDica;
+color laranjaDica       = color(220, 165, 0);
+color laranjaDicaEscuro = color(140, 165, 0);
+
 void telaInicial() {
   background(180);
 
