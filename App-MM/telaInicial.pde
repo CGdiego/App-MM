@@ -42,6 +42,9 @@ void telaInicial() {
   text("Aqui você aprenderá sobre", 640, 280);
   text("como não cair em golpes online", 640, 300);
   
+  text("Se você terminar, vai poder jogar", 640, 360);
+  text("um jogo final super legal", 640, 380);
+   
   fill(corBotao);
   stroke(0, 150, 50);
   strokeWeight(2);

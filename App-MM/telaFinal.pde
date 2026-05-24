@@ -18,6 +18,10 @@ void telaFinal() {
   textSize(20);
   text("Você venceu!", 640, 280);
   
+  fill(0);
+  textSize(20);
+  text("Você usou " + contagemDica + " dicas.", 640, 320);
+  
   fill(corBotao);
   stroke(0, 150, 50);
   strokeWeight(2);
@@ -25,7 +29,7 @@ void telaFinal() {
   
   fill(255);
   textSize(20);
-  text("JOGAR", 640, 507);
+  text("JOGAR JOGO FINAL", 640, 507);
   
   stroke(0);
   strokeWeight(1);
@@ -141,3 +145,4 @@ void telaFinal() {
   rect(xp+250, yp+70, 100, 70, 10);
   fill(200, 0, 0); rect(xp+250, yp+115, 100, 15);
   popMatrix();
+}

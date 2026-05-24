@@ -1,4 +1,4 @@
-// Feito por ---
+// Feito por Mateus
 
 
 void p10() {
@@ -10,7 +10,6 @@ void p10() {
 
 // TELA BRANCA NO MEIO
 
-
   fill(255);
   stroke(0);
   strokeWeight(4);
@@ -18,8 +17,7 @@ void p10() {
   rect(330,100,700,550,20);
 
 
-// TEXOS
-
+// TEXTOS
 
   fill(0);
 
@@ -31,13 +29,14 @@ void p10() {
 
   textSize(28);
 
-  text("Alguém faz pfv",width/2,260);
+  text("É importante usar senhas",width/2,260);
 
-  text("Alguém faz pfv",width/2,300);
+  text("difíceis para proteger",width/2,300);
+
+  text("suas contas?",width/2,340);
 
 
 // BOTÃO SIM
-
 
   fill(corSim);
 
@@ -48,10 +47,9 @@ void p10() {
   textSize(32);
 
   text("SIM",540,552);
-  
+
 
 // BOTÃO NÃO
-
 
   fill(corNao);
 
@@ -64,7 +62,6 @@ void p10() {
 
 // BOTÃO DICA
 
-
   fill(corDica);
 
   rect(1100,500,180,80,20);
@@ -73,22 +70,44 @@ void p10() {
 
   text("DICA",1190,552);
 
+
 // TELA DICA
- 
+
   if (dica10 == 1) {
-    xp = 0;
-    yp = 0;
-    // COLA SEU PERSONAGEM AQUI E AJUSTA O XP E O YP PRA FICAR NA POSIÇÃO CERTA
-    
+
+  bX = -1050;
+  bY = 450;
+
+    // Robô Reddit
+
+    pushMatrix();
+    translate(1040, 385);
+    scale(0.70);
+    translate(-200, -300);
+    stroke(0); strokeWeight(2);
+    line(bX, bY-80, bX, bY-110);
+    fill(255, 0, 0); ellipse(bX, bY-115, 10, 10);
+    fill(150); stroke(0);
+    rect(bX-10, bY-45, 20, 10);
+    rect(bX-40, bY-90, 80, 50, 5);
+    fill(255, 0, 0); ellipse(bX-20, bY-70, 15, 15); ellipse(bX+20, bY-70, 15, 15);
+    fill(150); rect(bX-50, bY-35, 100, 100, 10);
+    fill(0, 200, 255); rect(bX-30, bY-15, 60, 30);
+    fill(150); rect(bX-70, bY-20, 20, 50); rect(bX+50, bY-20, 20, 50);
+    fill(255, 255, 0); ellipse(bX-15, bY, 10, 10);
+    fill(0, 255, 0); ellipse(bX+15, bY, 10, 10);
+    popMatrix();
+
     fill(255);
     stroke(0);
     strokeWeight(4);
-  
+
     rect(15,280,300,100,20);
-    
+
     fill(0);
-    textSize(28);
-    text("Alguém faz pfv",160,320);
-    text("Alguém faz pfv",160,360);
+    textSize(24);
+
+    text("Senhas fortes deixam",160,320);
+    text("suas contas seguras!",160,360);
   }
 }
