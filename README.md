@@ -1,12 +1,12 @@
 # 🛜 NUWS — Não Use Wi-fi de Shopping
 
-> *Um jogo educativo sobre segurança digital feito em Processing, pra criança aprender que nem todo Wi-Fi aberto é de confiança — e nem toda senha precisa sair da boca.*
+> *Um jogo educativo sobre segurança digital feito em Processing, pra criança aprender que nem todo Wi-Fi aberto é de confiança, e nem toda senha precisa sair da boca.*
 
 ---
 
 ## 🎮 O que é isso?
 
-O **NUWS** é um joguinho de perguntas e respostas sobre segurança digital, desenvolvido como projeto da disciplina de **Sistemas Multimídia** na **UFU (FACOM)**. A ideia é simples: crianças entre 7 e 10 anos respondem perguntas sobre situações do dia a dia na internet — compartilhar senha, clicar em links esquisitos, usar Wi-Fi de shopping — e aprendem, na prática, o que é seguro e o que não é.
+O **NUWS** é um joguinho de perguntas e respostas sobre segurança digital, desenvolvido como projeto da disciplina de **Experiência Criativa: Explorando Computação e Inteligência Artificial** na **Pontifícia Universidade Católica do Paraná (PUCPR)**. A ideia é simples: crianças entre 7 e 10 anos respondem perguntas sobre situações do dia a dia na internet — compartilhar senha, clicar em links esquisitos, usar Wi-Fi de shopping — e aprendem, na prática, o que é seguro e o que não é.
 
 Não tem nada de moralismo chato aqui. Tem personagens pixelados malucos, uma trilha sonora do Smash Bros. e um urso que aparece pra dar dica quando você tá perdido.
 
