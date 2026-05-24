@@ -1,7 +1,7 @@
-// Feito por Gustavo Gomes e Diego
+// Feito por ----
 
 
-void p01() {
+void p02() {
 
   
 // FUNDO AZUL
@@ -27,13 +27,13 @@ void p01() {
 
   textSize(40);
 
-  text("PERGUNTA 1.", width/2, 180);
+  text("PERGUNTA 2.", width/2, 180);
 
   textSize(28);
 
-  text("Você deve compartilhar sua senha",width/2,260);
+  text("Alguém faz pfv",width/2,260);
 
-  text("com estranhos na internet?",width/2,300);
+  text("Alguém faz pfv",width/2,300);
 
 
 // BOTÃO SIM
@@ -75,7 +75,7 @@ void p01() {
 
 // TELA DICA
  
-  if (dica01 == 1) {
+  if (dica02 == 1) {
     xp = -2500;
     yp = -200;
     pushMatrix();
@@ -110,6 +110,6 @@ void p01() {
     
     fill(0);
     textSize(28);
-    text("Senha é segredo!",160,340);
+    text("Alguém faz pfv",160,340);
   }
 }
