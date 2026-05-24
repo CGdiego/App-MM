@@ -1,25 +1,6 @@
-// Feito por Lucas e Diego
+// Feito por Diego
 
-float xp = 0, yp = 0;
-float bX = 200, bY = 300;
-
-color corBotao;
-color verde             = color(0, 200, 80);
-color verdeEscuro       = color(0, 120, 40);
-
-color corSim;
-color verdeSim          = color(0, 200, 0);
-color verdeSimEscuro    = color(0, 120, 0);
-
-color corNao;
-color vermelhoNao       = color(220, 0, 0);
-color vermelhoNaoEscuro = color(140, 0, 0);
-
-color corDica;
-color laranjaDica       = color(220, 165, 0);
-color laranjaDicaEscuro = color(140, 165, 0);
-
-void telaInicial() {
+void telaFinal() {
   background(180);
 
   fill(255);
@@ -29,18 +10,13 @@ void telaInicial() {
 
   textAlign(CENTER, CENTER);
   
-  fill(80);
-  textSize(22);
-  text("BEM-VINDO AO", 640, 140);
-  
   fill(220, 0, 0);
   textSize(36);
-  text("NUWS", 640, 220);
+  text("PARABÉNS", 640, 220);
   
   fill(0);
   textSize(20);
-  text("Aqui você aprenderá sobre", 640, 280);
-  text("como não cair em golpes online", 640, 300);
+  text("Você venceu!", 640, 280);
   
   fill(corBotao);
   stroke(0, 150, 50);
@@ -165,4 +141,3 @@ void telaInicial() {
   rect(xp+250, yp+70, 100, 70, 10);
   fill(200, 0, 0); rect(xp+250, yp+115, 100, 15);
   popMatrix();
-}

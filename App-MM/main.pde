@@ -36,6 +36,7 @@ void draw(){
   else if (tela == 8) { p08(); mouseOverSim(); mouseOverNao(); mouseOverDica();}
   else if (tela == 9) { p09(); mouseOverSim(); mouseOverNao(); mouseOverDica();}
   else if (tela == 10) { p10(); mouseOverSim(); mouseOverNao(); mouseOverDica();}
+  else { mouseOverJogar(); telaFinal();}
   mouseOverJogar();
 }
 
@@ -83,6 +84,9 @@ void mousePressed(){
     if (mouseX > 450 && mouseX < 630 && mouseY > 500 && mouseY < 580) { tela = 0; xp = 0; yp = 0; }
     if (mouseX > 730 && mouseX < 910 && mouseY > 500 && mouseY < 580) tela = 11;
     if (mouseX > 1100 && mouseX < 1280 && mouseY > 500 && mouseY < 580) dica10 = 1; }
+  if (tela == 11) {
+    if (mouseX > 530 && mouseX < 750 && mouseY > 480 && mouseY < 535) tela = 12;
+  }
 }
 
 // Botão pressionado
@@ -106,4 +110,11 @@ void mouseOverDica(){
     corDica = laranjaDicaEscuro;
   else
     corDica = laranjaDica;
+}
+
+void mouseOverJogar(){
+  if (mouseX > 530 && mouseX < 750 && mouseY > 480 && mouseY < 535)
+    corBotao = verdeEscuro;
+  else
+    corBotao = verde;
 }
