@@ -105,7 +105,7 @@ void mousePressed(){
     if (mouseX > 450 && mouseX < 630 && mouseY > 500 && mouseY < 580) { tela = 11; xp = 0; yp = 0; bX = 200; bY = 300; }
     if (mouseX > 730 && mouseX < 910 && mouseY > 500 && mouseY < 580) { tela = 0; xp = 0; yp = 0; bX = 200; bY = 300; }
     if (mouseX > 1100 && mouseX < 1280 && mouseY > 500 && mouseY < 580) { dica10 = 1; contagemDica += 1; }}
-  if (tela == 11) {
+  else if (tela == 11) {
     if (mouseX > 530 && mouseX < 750 && mouseY > 480 && mouseY < 535) tela = 12;
   }
 }
