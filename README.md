@@ -141,5 +141,5 @@ Desenvolvido para a disciplina de **Experiência Criativa: Explorando Computaç�
 ---
 
 <p align="center">
-  Feito com <code>rect()</code>, <code>ellipse()</code>, muita paciência e uma dose de Giorno's Theme — PUCPR 2026
+  Feito com muita paciência e uma dose de Giorno's Theme — PUCPR 2026
 </p>
