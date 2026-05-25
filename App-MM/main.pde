@@ -15,7 +15,7 @@ int dica09 = 0;
 int dica10 = 0;
 int contagemDica = 0;
 boolean musicaTrocada = false;
-PImage dani, theo;
+PImage dani, theo, certificado;
 boolean theoVivo = true;
 float xd, yd;
 float xt = 200, yt = 100;
@@ -30,6 +30,7 @@ void setup(){
   player.loop();
   dani = loadImage("dani.png");
   theo = loadImage("theo.png");
+  certificado = loadImage("certificado_maneiro.jpeg");
   imageMode(CENTER);
   xd = width/2;
   yd = height/2;

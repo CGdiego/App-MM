@@ -13,6 +13,7 @@ void jogo(){
     text("THEO FOI ELIMINADO", width/2, height/2);
     textAlign(LEFT);
     textSize(12); 
+    image(certificado, width/2, height/2, 1366, 768); 
   }
   
   move_player();
