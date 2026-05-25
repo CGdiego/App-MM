@@ -27,7 +27,7 @@ Sem segundas chances. Atenção do início ao fim.
 
 ## 🎁 Jogo Bônus
 
-Quem responde as 10 perguntas sem errar desbloqueia o jogo bônus: um mini-game onde você controla o **Dani** (estilo Mii, camisa listrada, óculos laranja) com as setas do teclado e precisa alcançar o **Theo** (estilo Mii, boné e roupa roxa) que corre pela tela tentando escapar. Sim, é exatamente o que parece — e sim, foi intencional.
+Quem responde as 10 perguntas sem errar desbloqueia o jogo bônus: um mini-game onde você controla o **Dani** (estilo Mii, camisa listrada, óculos laranja) com as setas do teclado e precisa alcançar o **Theo** (estilo Mii, boné e roupa roxa) que corre pela tela tentando escapar.
 
 ---
 
