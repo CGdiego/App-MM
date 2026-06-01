@@ -21,6 +21,9 @@ String emailDigitado = "";
 Minim minim;
 AudioPlayer player;
 
+AudioSample somAcerto;
+AudioSample somErro;
+
 // ---- GABARITO: resposta correta por pergunta (1=SIM, 2=NÃO) ----
 int[] gabarito = {
   2, 2, 2, 1, 2, 1, 2, 1, 2, 1,  // p01-p10
@@ -33,6 +36,10 @@ void setup(){
   minim = new Minim(this);
   player = minim.loadFile("smash_brawl.mp3");
   player.loop();
+  
+  somAcerto = minim.loadSample("acerto.wav", 512); // Nome do seu arquivo de acerto
+  somErro = minim.loadSample("erro.wav", 512);
+  
   jotaro = loadImage("jotaro.png");
   putin  = loadImage("putin.png");
   certificado = loadImage("certificado_maneiro.jpeg");
@@ -153,11 +160,13 @@ void mousePressed(){
   if (tela == 0) {
     // Botão JOGAR
     if (mouseX > 530 && mouseX < 750 && mouseY > 450 && mouseY < 500) {
+      somAcerto.trigger();
       resetarQuiz();
       tela = 1;
     }
     // Botão CRÉDITOS
     if (mouseX > 555 && mouseX < 730 && mouseY > 515 && mouseY < 555) {
+      somAcerto.trigger();
       tela = 15;
     }
   }
@@ -167,13 +176,27 @@ void mousePressed(){
     int resp = gabarito[id - 1];
 
     if (clicouSim()) {
-      if (resp == 1) avancarPergunta(); else voltarInicio();
+      if (resp == 1) { 
+        somAcerto.trigger(); 
+        avancarPergunta();
+      }
+        else voltarInicio();
     }
     if (clicouNao()) {
-      if (resp == 2) avancarPergunta(); else voltarInicio();
-    }
-    if (clicouDica()) {
-      if (dicaAtual == 0) { contagemDica++; dicaAtual = 1; }
+      if (resp == 2) {
+        somAcerto.trigger(); // <--- Toca som de acerto se NÃO for correto
+        avancarPergunta();
+      } else {
+        somErro.trigger();   // <--- Toca som de erro se errar
+        voltarInicio();
+      }
+    }      
+if (clicouDica()) {
+  if (dicaAtual == 0) { 
+        somAcerto.trigger(); // <--- Opcional: toca um som sutil ao abrir a dica
+        contagemDica++; 
+        dicaAtual = 1; 
+      }
     }
   }
   // Tela final (11)
@@ -214,12 +237,13 @@ void mousePressed(){
   else if (tela == 15) {
     // Botão VOLTAR
     if (mouseX > 543 && mouseX < 823 && mouseY > 645 && mouseY < 690) {
+      somErro.trigger();
       tela = 0;
     }
   }
 }
 
-void keyPressed() {
+void keyPressed(){
   if (tela == 13) {
     if (key == BACKSPACE) {
       if (emailDigitado.length() > 0)
