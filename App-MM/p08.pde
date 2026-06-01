@@ -13,7 +13,7 @@ void p08() {
   textAlign(CENTER);
 
   textSize(40);
-  text("PERGUNTA 8.", width/2, 180);
+  text("PERGUNTA " + perguntaAtual + ".", width/2, 180);
 
   textSize(28);
   text("Você deve sair de",width/2,260);
@@ -39,7 +39,7 @@ void p08() {
   fill(255);
   text("DICA",1190,552);
 
-  if (dica08 == 1) {
+  if (dicaAtual == 1) {
 
     xp = -2500;
     yp = -200;

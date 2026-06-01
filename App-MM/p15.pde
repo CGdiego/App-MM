@@ -1,83 +1,49 @@
-// Feito por Gustavo Gomes e Diego
+// Pergunta 15
 
+void p15() {
 
-void p01() {
-
-  
 // FUNDO AZUL
   background(0,120,255);
 
-
 // TELA BRANCA NO MEIO
-
-
   fill(255);
   stroke(0);
   strokeWeight(4);
-
   rect(330,100,700,550,20);
 
-
-// TEXOS
-
-
+// TEXTOS
   fill(0);
-
   textAlign(CENTER);
-
   textSize(40);
-
   text("PERGUNTA " + perguntaAtual + ".", width/2, 180);
-
   textSize(28);
-
-  text("Você deve compartilhar sua senha",width/2,260);
-
-  text("com estranhos na internet?",width/2,300);
-
+  text("Você deve enviar fotos",width/2,260);
+  text("suas para pessoas que",width/2,300);
+  text("conheceu online?",width/2,340);
 
 // BOTÃO SIM
-
-
   fill(corSim);
-
   rect(450,500,180,80,20);
-
   fill(255);
-
   textSize(32);
-
   text("SIM",540,552);
-  
 
 // BOTÃO NÃO
-
-
   fill(corNao);
-
   rect(730,500,180,80,20);
-
   fill(255);
-
   text("NÃO",820,552);
 
-
 // BOTÃO DICA
-
-
   fill(corDica);
-
   rect(1100,500,180,80,20);
-
   fill(255);
-
   text("DICA",1190,552);
 
 // TELA DICA
- 
   if (dicaAtual == 1) {
-    xp = -2500;
-    yp = -200;
+    // Freddy
+    xp = -2500; yp = -200;
     pushMatrix();
     translate(1040, 600);
     scale(0.35);
@@ -100,16 +66,12 @@ void p01() {
     rect(xp+220, yp+130, 160, 20, 10);
     rect(xp+250, yp+70, 100, 70, 10);
     fill(200, 0, 0); rect(xp+250, yp+115, 100, 15);
-    popMatrix(); 
-    
-    fill(255);
-    stroke(0);
-    strokeWeight(4);
-  
+    popMatrix();
+
+    fill(255); stroke(0); strokeWeight(4);
     rect(15,280,300,100,20);
-    
-    fill(0);
-    textSize(28);
-    text("Senha é segredo!",160,340);
+    fill(0); textSize(24);
+    text("Fotos podem ser",160,320);
+    text("usadas contra você!",160,360);
   }
 }

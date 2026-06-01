@@ -13,7 +13,7 @@ void p02() {
   textAlign(CENTER);
 
   textSize(40);
-  text("PERGUNTA 2.", width/2, 180);
+  text("PERGUNTA " + perguntaAtual + ".", width/2, 180);
 
   textSize(28);
   text("Você deve clicar em links",width/2,260);
@@ -39,7 +39,7 @@ void p02() {
   fill(255);
   text("DICA",1190,552);
 
-  if (dica02 == 1) {
+  if (dicaAtual == 1) {
 
     xp = -250;
     yp = -150;

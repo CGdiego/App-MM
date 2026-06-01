@@ -27,7 +27,7 @@ void p04() {
 
   textSize(40);
 
-  text("PERGUNTA 4.", width/2, 180);
+  text("PERGUNTA " + perguntaAtual + ".", width/2, 180);
 
   textSize(28);
 
@@ -77,7 +77,7 @@ void p04() {
 
 // TELA DICA
  
-  if (dica04 == 1) {
+  if (dicaAtual == 1) {
     xp = -200;
     yp = 900;
     pushMatrix();

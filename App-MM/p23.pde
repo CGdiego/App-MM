@@ -1,85 +1,49 @@
-// Feito por Diego
+// Pergunta 23
 
-
-void p03() {
-
+void p23() {
 
 // FUNDO AZUL
   background(0,120,255);
 
-
 // TELA BRANCA NO MEIO
-
-
   fill(255);
   stroke(0);
   strokeWeight(4);
-
   rect(330,100,700,550,20);
 
-
-// TEXOS
-
-
+// TEXTOS
   fill(0);
-
   textAlign(CENTER);
-
   textSize(40);
-
   text("PERGUNTA " + perguntaAtual + ".", width/2, 180);
-
   textSize(28);
-
-  text("Se alguém pedir o número do",width/2,260);
-
-  text("cartão de crédito do seu pai,",width/2,300);
-  
-  text("você passa?",width/2,340);
-
+  text("Você pode bloquear e",width/2,260);
+  text("denunciar pessoas que",width/2,300);
+  text("te assediam online?",width/2,340);
 
 // BOTÃO SIM
-
-
   fill(corSim);
-
   rect(450,500,180,80,20);
-
   fill(255);
-
   textSize(32);
-
   text("SIM",540,552);
-  
 
 // BOTÃO NÃO
-
-
   fill(corNao);
-
   rect(730,500,180,80,20);
-
   fill(255);
-
   text("NÃO",820,552);
 
-
 // BOTÃO DICA
-
-
   fill(corDica);
-
   rect(1100,500,180,80,20);
-
   fill(255);
-
   text("DICA",1190,552);
 
 // TELA DICA
- 
   if (dicaAtual == 1) {
-    xp = -200;
-    yp = 900;
+    // Creeper
+    xp = -200; yp = 900;
     pushMatrix();
     translate(230, 65);
     scale(0.35);
@@ -96,16 +60,11 @@ void p03() {
     rect(xp+180, yp+210, 38, 80);
     rect(xp+256, yp+210, 38, 80);
     popMatrix();
-    
-    fill(255);
-    stroke(0);
-    strokeWeight(4);
-  
+
+    fill(255); stroke(0); strokeWeight(4);
     rect(15,280,300,100,20);
-    
-    fill(0);
-    textSize(28);
-    text("Quem tem o número",160,320);
-    text("pode usar seu dinheiro!",160,360);
+    fill(0); textSize(24);
+    text("Bloquear é um",160,320);
+    text("direito seu!",160,360);
   }
 }

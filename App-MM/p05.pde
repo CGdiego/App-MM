@@ -13,7 +13,7 @@ void p05() {
   textAlign(CENTER);
 
   textSize(40);
-  text("PERGUNTA 5.", width/2, 180);
+  text("PERGUNTA " + perguntaAtual + ".", width/2, 180);
 
   textSize(28);
   text("Você deve aceitar",width/2,260);
@@ -39,7 +39,7 @@ void p05() {
   fill(255);
   text("DICA",1190,552);
 
-  if (dica05 == 1) {
+  if (dicaAtual == 1) {
     bX = -1050;
     bY = 450;
     pushMatrix();

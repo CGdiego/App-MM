@@ -1,85 +1,49 @@
-// Feito por Mateus
+// Pergunta 19
 
-
-void p10() {
-
+void p19() {
 
 // FUNDO AZUL
   background(0,120,255);
 
-
 // TELA BRANCA NO MEIO
-
   fill(255);
   stroke(0);
   strokeWeight(4);
-
   rect(330,100,700,550,20);
 
-
 // TEXTOS
-
   fill(0);
-
   textAlign(CENTER);
-
   textSize(40);
-
   text("PERGUNTA " + perguntaAtual + ".", width/2, 180);
-
   textSize(28);
-
-  text("É importante usar senhas",width/2,260);
-
-  text("difíceis para proteger",width/2,300);
-
-  text("suas contas?",width/2,340);
-
+  text("Ter um antivírus instalado",width/2,260);
+  text("ajuda a proteger",width/2,300);
+  text("seu computador?",width/2,340);
 
 // BOTÃO SIM
-
   fill(corSim);
-
   rect(450,500,180,80,20);
-
   fill(255);
-
   textSize(32);
-
   text("SIM",540,552);
 
-
 // BOTÃO NÃO
-
   fill(corNao);
-
   rect(730,500,180,80,20);
-
   fill(255);
-
   text("NÃO",820,552);
 
-
 // BOTÃO DICA
-
   fill(corDica);
-
   rect(1100,500,180,80,20);
-
   fill(255);
-
   text("DICA",1190,552);
 
-
 // TELA DICA
-
   if (dicaAtual == 1) {
-
-  bX = -1050;
-  bY = 450;
-
-    // Robô Reddit
-
+    // Robô
+    bX = -1050; bY = 450;
     pushMatrix();
     translate(1040, 385);
     scale(0.70);
@@ -98,16 +62,10 @@ void p10() {
     fill(0, 255, 0); ellipse(bX+15, bY, 10, 10);
     popMatrix();
 
-    fill(255);
-    stroke(0);
-    strokeWeight(4);
-
+    fill(255); stroke(0); strokeWeight(4);
     rect(15,280,300,100,20);
-
-    fill(0);
-    textSize(24);
-
-    text("Senhas fortes deixam",160,320);
-    text("suas contas seguras!",160,360);
+    fill(0); textSize(24);
+    text("Antivírus bloqueia",160,320);
+    text("ameaças digitais!",160,360);
   }
 }

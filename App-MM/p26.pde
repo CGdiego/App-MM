@@ -1,51 +1,50 @@
-// Feito por João Victor
+// Pergunta 26
 
-void p07() {
+void p26() {
 
+// FUNDO AZUL
   background(0,120,255);
 
+// TELA BRANCA NO MEIO
   fill(255);
   stroke(0);
   strokeWeight(4);
   rect(330,100,700,550,20);
 
+// TEXTOS
   fill(0);
   textAlign(CENTER);
-
   textSize(40);
   text("PERGUNTA " + perguntaAtual + ".", width/2, 180);
-
   textSize(28);
-  text("Você deve compartilhar",width/2,260);
-  text("seu endereço com",width/2,300);
-  text("estranhos?",width/2,340);
+  text("Você deve verificar se uma",width/2,260);
+  text("notícia é verdadeira antes",width/2,300);
+  text("de compartilhá-la?",width/2,340);
 
+// BOTÃO SIM
   fill(corSim);
   rect(450,500,180,80,20);
-
   fill(255);
   textSize(32);
   text("SIM",540,552);
 
+// BOTÃO NÃO
   fill(corNao);
   rect(730,500,180,80,20);
-
   fill(255);
   text("NÃO",820,552);
 
+// BOTÃO DICA
   fill(corDica);
   rect(1100,500,180,80,20);
-
   fill(255);
   text("DICA",1190,552);
 
+// TELA DICA
   if (dicaAtual == 1) {
-
-    xp = -200;
-    yp = 200;
-
-    // CRIATURA AZUL
-     pushMatrix();
+    // Criatura Azul
+    xp = -200; yp = 200;
+    pushMatrix();
     translate(240, 280);
     scale(0.40);
     translate(-250, 0);
@@ -59,14 +58,10 @@ void p07() {
     strokeWeight(0); fill(255); rect(xp+205, yp+290, 90, 10);
     popMatrix();
 
-    fill(255);
-    stroke(0);
-    strokeWeight(4);
+    fill(255); stroke(0); strokeWeight(4);
     rect(15,280,300,100,20);
-
-    fill(0);
-    textSize(24);
-    text("Informações pessoais",160,320);
-    text("são privadas!",160,360);
+    fill(0); textSize(24);
+    text("Fake news se",160,320);
+    text("espalham rápido!",160,360);
   }
 }

@@ -1,22 +1,25 @@
 // Feito por Diego
+// Sistema de sorteio de 10 perguntas (de um pool de 30) adicionado por Claude
 
 import ddf.minim.*;
 
+// --- SISTEMA DE SORTEIO ---
+// Pool: perguntas 1-30. Cada rodada sorteia 10 sem repetição.
+// sequencia[] guarda os IDs das 10 perguntas sorteadas (1..30).
+// passo = índice atual em sequencia (0..9 → telas 1..10, depois tela 11).
+// perguntaAtual = número exibido na tela (1..10).
+// dicaAtual = 0 ou 1 para a pergunta em curso.
+
+int[] sequencia = new int[10];
+int passo = 0;         // qual das 10 estamos mostrando (0-based)
+int perguntaAtual = 1; // número exibido na pergunta (1-10)
+int dicaAtual = 0;     // dica da pergunta em curso
+
 int tela = 0;
-int dica01 = 0;
-int dica02 = 0;
-int dica03 = 0;
-int dica04 = 0;
-int dica05 = 0;
-int dica06 = 0;
-int dica07 = 0;
-int dica08 = 0;
-int dica09 = 0;
-int dica10 = 0;
 int contagemDica = 0;
 boolean musicaTrocada = false;
-PImage dani, theo, certificado;
-boolean theoVivo = true;
+PImage jotaro, putin, certificado;
+boolean putinVivo = true;
 float xd, yd;
 float xt = 200, yt = 100;
 String emailDigitado = "";
@@ -24,31 +27,78 @@ String emailDigitado = "";
 Minim minim;
 AudioPlayer player;
 
+// ---- GABARITO: resposta correta por pergunta (1=SIM, 2=NÃO) ----
+// índice 0 = pergunta 1, índice 29 = pergunta 30
+int[] gabarito = {
+  2, 2, 2, 1, 2, 1, 2, 1, 2, 1,  // p01-p10
+  2, 2, 1, 2, 2, 2, 2, 1, 1, 2,  // p11-p20
+  1, 2, 1, 2, 1, 1, 2, 1, 2, 2   // p21-p30
+};
+
 void setup(){
   size(1366, 768);
   minim = new Minim(this);
   player = minim.loadFile("smash_brawl.mp3");
   player.loop();
-  dani = loadImage("dani.png");
-  theo = loadImage("theo.png");
+  jotaro = loadImage("jotaro.png");
+  putin  = loadImage("putin.png");
   certificado = loadImage("certificado_maneiro.jpeg");
   imageMode(CENTER);
   xd = width/2;
   yd = height/2;
+  sortearPerguntas();
+}
+
+// Gera sequencia[] com 10 números únicos de 1 a 30 (Fisher-Yates)
+void sortearPerguntas() {
+  int[] pool = new int[30];
+  for (int i = 0; i < 30; i++) pool[i] = i + 1;
+  // embaralha
+  for (int i = 29; i > 0; i--) {
+    int j = (int) random(i + 1);
+    int tmp = pool[i]; pool[i] = pool[j]; pool[j] = tmp;
+  }
+  for (int i = 0; i < 10; i++) sequencia[i] = pool[i];
+}
+
+// Chama a função da pergunta cujo ID está em sequencia[passo]
+void chamarPerguntaAtual() {
+  int id = sequencia[passo];
+  if      (id ==  1) p01();
+  else if (id ==  2) p02();
+  else if (id ==  3) p03();
+  else if (id ==  4) p04();
+  else if (id ==  5) p05();
+  else if (id ==  6) p06();
+  else if (id ==  7) p07();
+  else if (id ==  8) p08();
+  else if (id ==  9) p09();
+  else if (id == 10) p10();
+  else if (id == 11) p11();
+  else if (id == 12) p12();
+  else if (id == 13) p13();
+  else if (id == 14) p14();
+  else if (id == 15) p15();
+  else if (id == 16) p16();
+  else if (id == 17) p17();
+  else if (id == 18) p18();
+  else if (id == 19) p19();
+  else if (id == 20) p20();
+  else if (id == 21) p21();
+  else if (id == 22) p22();
+  else if (id == 23) p23();
+  else if (id == 24) p24();
+  else if (id == 25) p25();
+  else if (id == 26) p26();
+  else if (id == 27) p27();
+  else if (id == 28) p28();
+  else if (id == 29) p29();
+  else if (id == 30) p30();
 }
 
 void draw(){
   if      (tela == 0)  { telaInicial(); }
-  else if (tela == 1)  { p01(); mouseOverSim(); mouseOverNao(); mouseOverDica(); }
-  else if (tela == 2)  { p02(); mouseOverSim(); mouseOverNao(); mouseOverDica(); }
-  else if (tela == 3)  { p03(); mouseOverSim(); mouseOverNao(); mouseOverDica(); }
-  else if (tela == 4)  { p04(); mouseOverSim(); mouseOverNao(); mouseOverDica(); }
-  else if (tela == 5)  { p05(); mouseOverSim(); mouseOverNao(); mouseOverDica(); }
-  else if (tela == 6)  { p06(); mouseOverSim(); mouseOverNao(); mouseOverDica(); }
-  else if (tela == 7)  { p07(); mouseOverSim(); mouseOverNao(); mouseOverDica(); }
-  else if (tela == 8)  { p08(); mouseOverSim(); mouseOverNao(); mouseOverDica(); }
-  else if (tela == 9)  { p09(); mouseOverSim(); mouseOverNao(); mouseOverDica(); }
-  else if (tela == 10) { p10(); mouseOverSim(); mouseOverNao(); mouseOverDica(); }
+  else if (tela == 1)  { chamarPerguntaAtual(); mouseOverSim(); mouseOverNao(); mouseOverDica(); }
   else if (tela == 11) {
     telaFinal();
     if (!musicaTrocada) {
@@ -61,80 +111,93 @@ void draw(){
   else if (tela == 12) { jogo(); }
   else if (tela == 13) { telaCertificado(); }
   else if (tela == 14) { telaVerCertificado(); }
-  mouseOverJogar(); // chamado UMA vez, aqui, para todas as telas
+  mouseOverJogar();
 }
 
 void resetarJogo() {
   emailDigitado = "";
-  theoVivo = true;
+  putinVivo = true;
   xt = 200; yt = 100;
   xd = width/2; yd = height/2;
   xp = 0; yp = 0; bX = 200; bY = 300;
 }
 
+void resetarQuiz() {
+  passo = 0;
+  perguntaAtual = 1;
+  dicaAtual = 0;
+  contagemDica = 0;
+  musicaTrocada = false;
+  sortearPerguntas();
+}
+
+// Retorna true se o botão SIM foi clicado
+boolean clicouSim() {
+  return mouseX > 450 && mouseX < 630 && mouseY > 500 && mouseY < 580;
+}
+// Retorna true se o botão NÃO foi clicado
+boolean clicouNao() {
+  return mouseX > 730 && mouseX < 910 && mouseY > 500 && mouseY < 580;
+}
+// Retorna true se o botão DICA foi clicado
+boolean clicouDica() {
+  return mouseX > 1100 && mouseX < 1280 && mouseY > 500 && mouseY < 580;
+}
+
+// Avança para a próxima pergunta ou para a tela final
+void avancarPergunta() {
+  dicaAtual = 0;
+  passo++;
+  if (passo >= 10) {
+    passo = 9; // mantém no limite por segurança
+    tela = 11; // tela final
+  } else {
+    perguntaAtual++;
+    // tela continua == 1
+  }
+}
+
+// Volta para o início (resposta errada)
+void voltarInicio() {
+  tela = 0;
+  xp = 0; yp = 0; bX = 200; bY = 300;
+}
+
 void mousePressed(){
   if (tela == 0) {
-    if (mouseX > 530 && mouseX < 750 && mouseY > 480 && mouseY < 535) tela = 1;
+    if (mouseX > 530 && mouseX < 750 && mouseY > 480 && mouseY < 535) {
+      resetarQuiz();
+      tela = 1;
+    }
   }
   else if (tela == 1) {
-    if (mouseX > 450 && mouseX < 630 && mouseY > 500 && mouseY < 580) { tela = 0; xp = 0; yp = 0; bX = 200; bY = 300; }
-    if (mouseX > 730 && mouseX < 910 && mouseY > 500 && mouseY < 580) tela = 2;
-    if (mouseX > 1100 && mouseX < 1280 && mouseY > 500 && mouseY < 580) { if (dica01 == 0) contagemDica++; dica01 = 1; }}
-  else if (tela == 2) {
-    if (mouseX > 450 && mouseX < 630 && mouseY > 500 && mouseY < 580) { tela = 0; xp = 0; yp = 0; bX = 200; bY = 300; }
-    if (mouseX > 730 && mouseX < 910 && mouseY > 500 && mouseY < 580) tela = 3;
-    if (mouseX > 1100 && mouseX < 1280 && mouseY > 500 && mouseY < 580) { if (dica02 == 0) contagemDica++; dica02 = 1; }}
-  else if (tela == 3) {
-    if (mouseX > 450 && mouseX < 630 && mouseY > 500 && mouseY < 580) { tela = 0; xp = 0; yp = 0; bX = 200; bY = 300; }
-    if (mouseX > 730 && mouseX < 910 && mouseY > 500 && mouseY < 580) tela = 4;
-    if (mouseX > 1100 && mouseX < 1280 && mouseY > 500 && mouseY < 580) { if (dica03 == 0) contagemDica++; dica03 = 1; }}
-  else if (tela == 4) {
-    if (mouseX > 450 && mouseX < 630 && mouseY > 500 && mouseY < 580) tela = 5;
-    if (mouseX > 730 && mouseX < 910 && mouseY > 500 && mouseY < 580) { tela = 0; xp = 0; yp = 0; bX = 200; bY = 300; }
-    if (mouseX > 1100 && mouseX < 1280 && mouseY > 500 && mouseY < 580) { if (dica04 == 0) contagemDica++; dica04 = 1; }}
-  else if (tela == 5) {
-    if (mouseX > 450 && mouseX < 630 && mouseY > 500 && mouseY < 580) { tela = 0; xp = 0; yp = 0; bX = 200; bY = 300; }
-    if (mouseX > 730 && mouseX < 910 && mouseY > 500 && mouseY < 580) tela = 6;
-    if (mouseX > 1100 && mouseX < 1280 && mouseY > 500 && mouseY < 580) { if (dica05 == 0) contagemDica++; dica05 = 1; }}
-  else if (tela == 6) {
-    if (mouseX > 450 && mouseX < 630 && mouseY > 500 && mouseY < 580) tela = 7;
-    if (mouseX > 730 && mouseX < 910 && mouseY > 500 && mouseY < 580) { tela = 0; xp = 0; yp = 0; bX = 200; bY = 300; }
-    if (mouseX > 1100 && mouseX < 1280 && mouseY > 500 && mouseY < 580) { if (dica06 == 0) contagemDica++; dica06 = 1; }}
-  else if (tela == 7) {
-    if (mouseX > 450 && mouseX < 630 && mouseY > 500 && mouseY < 580) { tela = 0; xp = 0; yp = 0; bX = 200; bY = 300; }
-    if (mouseX > 730 && mouseX < 910 && mouseY > 500 && mouseY < 580) tela = 8;
-    if (mouseX > 1100 && mouseX < 1280 && mouseY > 500 && mouseY < 580) { if (dica07 == 0) contagemDica++; dica07 = 1; }}
-  else if (tela == 8) {
-    if (mouseX > 450 && mouseX < 630 && mouseY > 500 && mouseY < 580) tela = 9;
-    if (mouseX > 730 && mouseX < 910 && mouseY > 500 && mouseY < 580) { tela = 0; xp = 0; yp = 0; bX = 200; bY = 300; }
-    if (mouseX > 1100 && mouseX < 1280 && mouseY > 500 && mouseY < 580) { if (dica08 == 0) contagemDica++; dica08 = 1; }}
-  else if (tela == 9) {
-    if (mouseX > 450 && mouseX < 630 && mouseY > 500 && mouseY < 580) { tela = 0; xp = 0; yp = 0; bX = 200; bY = 300; }
-    if (mouseX > 730 && mouseX < 910 && mouseY > 500 && mouseY < 580) tela = 10;
-    if (mouseX > 1100 && mouseX < 1280 && mouseY > 500 && mouseY < 580) { if (dica09 == 0) contagemDica++; dica09 = 1; }}
-  else if (tela == 10) {
-    if (mouseX > 450 && mouseX < 630 && mouseY > 500 && mouseY < 580) { tela = 11; xp = 0; yp = 0; bX = 200; bY = 300; }
-    if (mouseX > 730 && mouseX < 910 && mouseY > 500 && mouseY < 580) { tela = 0; xp = 0; yp = 0; bX = 200; bY = 300; }
-    if (mouseX > 1100 && mouseX < 1280 && mouseY > 500 && mouseY < 580) { if (dica10 == 0) contagemDica++; dica10 = 1; }}
+    int id = sequencia[passo];
+    int resp = gabarito[id - 1]; // 1=SIM correto, 2=NÃO correto
+
+    if (clicouSim()) {
+      if (resp == 1) avancarPergunta(); else voltarInicio();
+    }
+    if (clicouNao()) {
+      if (resp == 2) avancarPergunta(); else voltarInicio();
+    }
+    if (clicouDica()) {
+      if (dicaAtual == 0) { contagemDica++; dicaAtual = 1; }
+    }
+  }
   else if (tela == 11) {
-    if (mouseX > 530 && mouseX < 750 && mouseY > 480 && mouseY < 535) tela = 12;
+    if (mouseX > 530 && mouseX < 750 && mouseY > 480 && mouseY < 535) { resetarJogo(); tela = 12; }
   }
   else if (tela == 13) {
-    // Botão CONFIRMAR (w=280 centrado: x=543..823, y=450..505)
     if (mouseX > 543 && mouseX < 823 && mouseY > 450 && mouseY < 505) {
-      resetarJogo();
-      tela = 0;
+      resetarJogo(); resetarQuiz(); tela = 0;
     }
-    // Botão NAO COLOCAR EMAIL (w=340 centrado: x=513..853, y=530..585)
     if (mouseX > 513 && mouseX < 853 && mouseY > 530 && mouseY < 585) {
       tela = 14;
     }
   }
   else if (tela == 14) {
-    // Botão VOLTAR AO INICIO (w=280 centrado: x=543..823, y=690..745)
     if (mouseX > 543 && mouseX < 823 && mouseY > 690 && mouseY < 745) {
-      resetarJogo();
-      tela = 0;
+      resetarJogo(); resetarQuiz(); tela = 0;
     }
   }
 }
