@@ -10,26 +10,44 @@ void telaFinal() {
 
   textAlign(CENTER, CENTER);
   
+  // Título "PARABÉNS" estilizado com sombra
+  textSize(46);
+  fill(80, 0, 0);
+  text("PARABÉNS", 643, 183);  // sombra
   fill(220, 0, 0);
-  textSize(36);
-  text("PARABÉNS", 640, 220);
+  text("PARABÉNS", 640, 180);
+  
+  stroke(220, 0, 0);
+  strokeWeight(3);
+  line(490, 210, 790, 210);
+  strokeWeight(1);
   
   fill(0);
   textSize(20);
-  text("Você venceu!", 640, 280);
+  text("Você venceu!", 640, 260);
   
   fill(0);
   textSize(20);
-  text("Você usou " + contagemDica + " dicas.", 640, 320);
+  text("Você usou " + contagemDica + " dicas.", 640, 300);
   
+  // Botão JOGAR JOGO FINAL
   fill(corBotao);
   stroke(0, 150, 50);
   strokeWeight(2);
-  rect(530, 480, 220, 55, 10);
-  
+  rect(490, 380, 300, 50, 10);
   fill(255);
-  textSize(20);
-  text("JOGAR JOGO FINAL", 640, 507);
+  textSize(18);
+  text("JOGAR JOGO FINAL", 640, 405);
+  
+  // Botão JOGAR NOVAMENTE
+  boolean hoverNovamente = mouseX > 490 && mouseX < 790 && mouseY > 445 && mouseY < 490;
+  fill(hoverNovamente ? color(180, 100, 0) : color(230, 140, 0));
+  stroke(160, 80, 0);
+  strokeWeight(2);
+  rect(490, 445, 300, 50, 10);
+  fill(255);
+  textSize(18);
+  text("JOGAR NOVAMENTE", 640, 470);
   
   stroke(0);
   strokeWeight(1);

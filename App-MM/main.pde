@@ -4,16 +4,10 @@
 import ddf.minim.*;
 
 // --- SISTEMA DE SORTEIO ---
-// Pool: perguntas 1-30. Cada rodada sorteia 10 sem repetição.
-// sequencia[] guarda os IDs das 10 perguntas sorteadas (1..30).
-// passo = índice atual em sequencia (0..9 → telas 1..10, depois tela 11).
-// perguntaAtual = número exibido na tela (1..10).
-// dicaAtual = 0 ou 1 para a pergunta em curso.
-
 int[] sequencia = new int[10];
-int passo = 0;         // qual das 10 estamos mostrando (0-based)
-int perguntaAtual = 1; // número exibido na pergunta (1-10)
-int dicaAtual = 0;     // dica da pergunta em curso
+int passo = 0;
+int perguntaAtual = 1;
+int dicaAtual = 0;
 
 int tela = 0;
 int contagemDica = 0;
@@ -28,7 +22,6 @@ Minim minim;
 AudioPlayer player;
 
 // ---- GABARITO: resposta correta por pergunta (1=SIM, 2=NÃO) ----
-// índice 0 = pergunta 1, índice 29 = pergunta 30
 int[] gabarito = {
   2, 2, 2, 1, 2, 1, 2, 1, 2, 1,  // p01-p10
   2, 2, 1, 2, 2, 2, 2, 1, 1, 2,  // p11-p20
@@ -49,11 +42,9 @@ void setup(){
   sortearPerguntas();
 }
 
-// Gera sequencia[] com 10 números únicos de 1 a 30 (Fisher-Yates)
 void sortearPerguntas() {
   int[] pool = new int[30];
   for (int i = 0; i < 30; i++) pool[i] = i + 1;
-  // embaralha
   for (int i = 29; i > 0; i--) {
     int j = (int) random(i + 1);
     int tmp = pool[i]; pool[i] = pool[j]; pool[j] = tmp;
@@ -61,7 +52,6 @@ void sortearPerguntas() {
   for (int i = 0; i < 10; i++) sequencia[i] = pool[i];
 }
 
-// Chama a função da pergunta cujo ID está em sequencia[passo]
 void chamarPerguntaAtual() {
   int id = sequencia[passo];
   if      (id ==  1) p01();
@@ -111,6 +101,7 @@ void draw(){
   else if (tela == 12) { jogo(); }
   else if (tela == 13) { telaCertificado(); }
   else if (tela == 14) { telaVerCertificado(); }
+  else if (tela == 15) { telaCreditos(); }
   mouseOverJogar();
 }
 
@@ -131,48 +122,49 @@ void resetarQuiz() {
   sortearPerguntas();
 }
 
-// Retorna true se o botão SIM foi clicado
 boolean clicouSim() {
   return mouseX > 450 && mouseX < 630 && mouseY > 500 && mouseY < 580;
 }
-// Retorna true se o botão NÃO foi clicado
 boolean clicouNao() {
   return mouseX > 730 && mouseX < 910 && mouseY > 500 && mouseY < 580;
 }
-// Retorna true se o botão DICA foi clicado
 boolean clicouDica() {
   return mouseX > 1100 && mouseX < 1280 && mouseY > 500 && mouseY < 580;
 }
 
-// Avança para a próxima pergunta ou para a tela final
 void avancarPergunta() {
   dicaAtual = 0;
   passo++;
   if (passo >= 10) {
-    passo = 9; // mantém no limite por segurança
-    tela = 11; // tela final
+    passo = 9;
+    tela = 11;
   } else {
     perguntaAtual++;
-    // tela continua == 1
   }
 }
 
-// Volta para o início (resposta errada)
 void voltarInicio() {
   tela = 0;
   xp = 0; yp = 0; bX = 200; bY = 300;
 }
 
 void mousePressed(){
+  // Tela inicial (0)
   if (tela == 0) {
-    if (mouseX > 530 && mouseX < 750 && mouseY > 480 && mouseY < 535) {
+    // Botão JOGAR
+    if (mouseX > 530 && mouseX < 750 && mouseY > 450 && mouseY < 500) {
       resetarQuiz();
       tela = 1;
     }
+    // Botão CRÉDITOS
+    if (mouseX > 555 && mouseX < 730 && mouseY > 515 && mouseY < 555) {
+      tela = 15;
+    }
   }
+  // Tela de perguntas (1)
   else if (tela == 1) {
     int id = sequencia[passo];
-    int resp = gabarito[id - 1]; // 1=SIM correto, 2=NÃO correto
+    int resp = gabarito[id - 1];
 
     if (clicouSim()) {
       if (resp == 1) avancarPergunta(); else voltarInicio();
@@ -184,9 +176,26 @@ void mousePressed(){
       if (dicaAtual == 0) { contagemDica++; dicaAtual = 1; }
     }
   }
+  // Tela final (11)
   else if (tela == 11) {
-    if (mouseX > 530 && mouseX < 750 && mouseY > 480 && mouseY < 535) { resetarJogo(); tela = 12; }
+    // Botão JOGAR JOGO FINAL
+    if (mouseX > 490 && mouseX < 790 && mouseY > 380 && mouseY < 430) {
+      resetarJogo();
+      tela = 12;
+    }
+    // Botão JOGAR NOVAMENTE
+    if (mouseX > 490 && mouseX < 790 && mouseY > 445 && mouseY < 490) {
+      resetarJogo();
+      resetarQuiz();
+      // Troca música de volta
+      player.close();
+      player = minim.loadFile("smash_brawl.mp3");
+      player.loop();
+      musicaTrocada = false;
+      tela = 1;
+    }
   }
+  // Tela certificado (13)
   else if (tela == 13) {
     if (mouseX > 543 && mouseX < 823 && mouseY > 450 && mouseY < 505) {
       resetarJogo(); resetarQuiz(); tela = 0;
@@ -195,9 +204,17 @@ void mousePressed(){
       tela = 14;
     }
   }
+  // Tela ver certificado (14)
   else if (tela == 14) {
     if (mouseX > 543 && mouseX < 823 && mouseY > 690 && mouseY < 745) {
       resetarJogo(); resetarQuiz(); tela = 0;
+    }
+  }
+  // Tela créditos (15)
+  else if (tela == 15) {
+    // Botão VOLTAR
+    if (mouseX > 543 && mouseX < 823 && mouseY > 645 && mouseY < 690) {
+      tela = 0;
     }
   }
 }
@@ -235,7 +252,7 @@ void mouseOverDica(){
 }
 
 void mouseOverJogar(){
-  if (mouseX > 530 && mouseX < 750 && mouseY > 480 && mouseY < 535)
+  if (mouseX > 530 && mouseX < 750 && mouseY > 450 && mouseY < 500)
     corBotao = verdeEscuro;
   else
     corBotao = verde;

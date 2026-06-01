@@ -31,11 +31,20 @@ void telaInicial() {
   
   fill(80);
   textSize(22);
-  text("BEM-VINDO AO", 640, 140);
+  text("BEM-VINDO AO", 640, 130);
   
+  // Título estilizado com sombra
+  textSize(60);
+  fill(80, 0, 0);
+  text("NUWS", 643, 203);  // sombra
   fill(220, 0, 0);
-  textSize(36);
-  text("NUWS", 640, 220);
+  text("NUWS", 640, 200);
+  
+  // Sublinhado decorativo
+  stroke(220, 0, 0);
+  strokeWeight(3);
+  line(560, 230, 720, 230);
+  strokeWeight(1);
   
   fill(0);
   textSize(20);
@@ -45,14 +54,24 @@ void telaInicial() {
   text("Se você terminar, vai poder jogar", 640, 360);
   text("um jogo final super legal", 640, 380);
    
+  // Botão JOGAR
   fill(corBotao);
   stroke(0, 150, 50);
   strokeWeight(2);
-  rect(530, 480, 220, 55, 10);
-  
+  rect(530, 450, 220, 50, 10);
   fill(255);
   textSize(20);
-  text("JOGAR", 640, 507);
+  text("JOGAR", 640, 475);
+  
+  // Botão CRÉDITOS
+  boolean hoverCreditos = mouseX > 555 && mouseX < 730 && mouseY > 515 && mouseY < 555;
+  fill(hoverCreditos ? color(50, 80, 160) : color(70, 110, 210));
+  stroke(30, 60, 140);
+  strokeWeight(2);
+  rect(555, 515, 175, 40, 10);
+  fill(255);
+  textSize(16);
+  text("CRÉDITOS", 642, 535);
   
   stroke(0);
   strokeWeight(1);
@@ -168,4 +187,78 @@ void telaInicial() {
   rect(xp+250, yp+70, 100, 70, 10);
   fill(200, 0, 0); rect(xp+250, yp+115, 100, 15);
   popMatrix();
+}
+
+void telaCreditos() {
+  background(20, 20, 40);
+  
+  // Painel central
+  fill(30, 30, 60);
+  stroke(100, 100, 220);
+  strokeWeight(3);
+  rect(300, 40, 766, 680, 20);
+  
+  textAlign(CENTER, CENTER);
+  
+  // Título
+  textSize(42);
+  fill(80, 80, 180);
+  text("CRÉDITOS", 683, 103); // sombra
+  fill(150, 150, 255);
+  text("CRÉDITOS", 683, 100);
+  
+  stroke(100, 100, 220);
+  strokeWeight(2);
+  line(380, 130, 986, 130);
+  
+  // Nomes
+  textSize(18);
+  fill(200, 200, 255);
+  text("Desenvolvido por:", 683, 165);
+  
+  textSize(22);
+  fill(255);
+  text("Diego", 683, 210);
+  text("Lucas", 683, 250);
+  text("Gustavo Gomes", 683, 290);
+  
+  stroke(100, 100, 220);
+  strokeWeight(1);
+  line(420, 320, 946, 320);
+  
+  textSize(18);
+  fill(200, 200, 255);
+  text("Colaborações de IA:", 683, 355);
+  
+  textSize(20);
+  fill(255);
+  text("Claude (Anthropic)", 683, 395);
+  
+  line(420, 425, 946, 425);
+  
+  textSize(18);
+  fill(200, 200, 255);
+  text("Músicas:", 683, 460);
+  
+  textSize(20);
+  fill(255);
+  text("Smash Bros Brawl - Main Theme", 683, 495);
+  text("JoJo's Bizarre Adventure - Giorno's Theme", 683, 525);
+  
+  line(420, 555, 946, 555);
+  
+  textSize(16);
+  fill(180, 180, 220);
+  text("Obrigado por jogar o NUWS!", 683, 590);
+  text("Fique seguro na internet!", 683, 615);
+  
+  // Botão VOLTAR
+  boolean hoverVoltar = mouseX > 543 && mouseX < 823 && mouseY > 645 && mouseY < 690;
+  fill(hoverVoltar ? color(50, 80, 160) : color(70, 110, 210));
+  stroke(30, 60, 140);
+  strokeWeight(2);
+  rect(543, 645, 280, 45, 10);
+  fill(255);
+  textSize(18);
+  text("VOLTAR", 683, 667);
 }
