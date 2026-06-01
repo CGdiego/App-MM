@@ -3,10 +3,10 @@
 void jogo(){
   background(0);
   
-  if (theoVivo) {
+  if (putinVivo) {
     desenha_target();
     if (dist(xd, yd, xt, yt) < 50) {
-      theoVivo = false;
+      putinVivo = false;
       tela = 13; // vai para a tela do certificado
     }
   }
@@ -19,12 +19,12 @@ void desenha_target() {
   fill(255, 0, 0, 100);
   noStroke();
   circle(xt, yt, 50);
-  image(theo, xt, yt, 60, 100);
+  image(putin, xt, yt, 60, 100);
   
   xt += 7;
   if (xt > width) {
     xt = 0;
-    yt = random(height);
+    yt = random(50, height - 50);
   }
 }
 
@@ -32,7 +32,7 @@ void desenha_player(float x, float y, color cor) {
   fill(cor);
   noStroke();
   ellipse(x, y, 50, 50);
-  image(dani, x, y, 80, 120);
+  image(jotaro, x, y, 80, 120);
 }
 
 void move_player() {
