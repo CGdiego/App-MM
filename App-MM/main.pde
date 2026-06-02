@@ -281,3 +281,41 @@ void mouseOverJogar(){
   else
     corBotao = verde;
 }
+
+void desenharBarraProgresso() {
+
+  float larguraBarra = 500;
+  float alturaBarra = 25;
+
+  float x = width/2 - larguraBarra/2;
+  float y = 50;
+
+  // Fundo
+  fill(220);
+  noStroke();
+  rect(x, y, larguraBarra, alturaBarra, 15);
+
+  // Progresso
+  fill(0, 200, 80);
+
+  float progresso = map(
+    perguntaAtual,
+    1,
+    10,
+    0,
+    larguraBarra
+  );
+
+  rect(x, y, progresso, alturaBarra, 15);
+
+  // Texto
+  fill(255);
+  textAlign(CENTER);
+  textSize(18);
+
+  text(
+    "Pergunta " + perguntaAtual + " de 10",
+    width/2,
+    y - 10
+  );
+}

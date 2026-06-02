@@ -6,6 +6,7 @@ void p04() {
 
 // FUNDO AZUL
   background(0,120,255);
+  desenharBarraProgresso();
 
 
 // TELA BRANCA NO MEIO

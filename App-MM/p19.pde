@@ -4,6 +4,7 @@ void p19() {
 
 // FUNDO AZUL
   background(0,120,255);
+  desenharBarraProgresso();
 
 // TELA BRANCA NO MEIO
   fill(255);

@@ -3,6 +3,7 @@
 void p05() {
 
   background(0,120,255);
+  desenharBarraProgresso();
 
   fill(255);
   stroke(0);
