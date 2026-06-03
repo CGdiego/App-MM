@@ -1,57 +1,16 @@
-// Feito por Gustavo Gomes
-
+// UI polida por Claude
 void p08() {
-
-  background(0,120,255);
-  desenharBarraProgresso();
-
-  fill(255);
-  stroke(0);
-  strokeWeight(4);
-  rect(330,100,700,550,20);
-
-  fill(0);
-  textAlign(CENTER);
-
-  textSize(40);
-  text("PERGUNTA " + perguntaAtual + ".", width/2, 180);
-
-  textSize(28);
-  text("Você deve sair de",width/2,260);
-  text("contas públicas depois",width/2,300);
-  text("de usar?",width/2,340);
-
-  fill(corSim);
-  rect(450,500,180,80,20);
-
-  fill(255);
-  textSize(32);
-  text("SIM",540,552);
-
-  fill(corNao);
-  rect(730,500,180,80,20);
-
-  fill(255);
-  text("NÃO",820,552);
-
-  fill(corDica);
-  rect(1100,500,180,80,20);
-
-  fill(255);
-  text("DICA",1190,552);
+  String[] linhas = {
+    "Você deve sair de",
+    "contas públicas depois",
+    "de usar?"
+  };
+  desenharTelaPergunta(linhas);
 
   if (dicaAtual == 1) {
-
-    xp = -2500;
-    yp = -200;
-
-    // FREDDY
-    xp = -2500;
-    yp = -200;
+    xp = -2500; yp = -200;
     pushMatrix();
-    translate(1040, 600);
-    scale(0.35);
-    translate(-300, -450);
+    translate(1040, 600); scale(0.35); translate(-300, -450);
     fill(139, 69, 19);
     ellipse(xp+300, yp+500, 220, 260);
     ellipse(xp+190, yp+470, 70, 180); ellipse(xp+410, yp+470, 70, 180);
@@ -67,19 +26,14 @@ void p08() {
     noFill(); stroke(0); strokeWeight(3);
     arc(xp+300, yp+330, 60, 40, 0, PI);
     noStroke(); fill(20);
-    rect(xp+220, yp+130, 160, 20, 10);
-    rect(xp+250, yp+70, 100, 70, 10);
+    rect(xp+220, yp+130, 160, 20, 10); rect(xp+250, yp+70, 100, 70, 10);
     fill(200, 0, 0); rect(xp+250, yp+115, 100, 15);
-    popMatrix(); 
+    popMatrix();
 
-    fill(255);
-    stroke(0);
-    strokeWeight(4);
-    rect(15,280,300,100,20);
-
-    fill(0);
-    textSize(24);
-    text("Isso evita que",160,320);
-    text("invadam sua conta!",160,360);
+    fill(255); stroke(0); strokeWeight(4);
+    rect(15, 280, 300, 100, 20);
+    fill(0); textSize(24); textAlign(CENTER);
+    text("Isso evita que", 160, 320);
+    text("invadam sua conta!", 160, 360);
   }
 }

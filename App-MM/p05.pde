@@ -1,74 +1,30 @@
-// Feito por Mateus
-
+// UI polida por Claude
 void p05() {
-
-  background(0,120,255);
-  desenharBarraProgresso();
-
-  fill(255);
-  stroke(0);
-  strokeWeight(4);
-  rect(330,100,700,550,20);
-
-  fill(0);
-  textAlign(CENTER);
-
-  textSize(40);
-  text("PERGUNTA " + perguntaAtual + ".", width/2, 180);
-
-  textSize(28);
-  text("Você deve aceitar",width/2,260);
-  text("amizade de qualquer",width/2,300);
-  text("pessoa online?",width/2,340);
-
-  fill(corSim);
-  rect(450,500,180,80,20);
-
-  fill(255);
-  textSize(32);
-  text("SIM",540,552);
-
-  fill(corNao);
-  rect(730,500,180,80,20);
-
-  fill(255);
-  text("NÃO",820,552);
-
-  fill(corDica);
-  rect(1100,500,180,80,20);
-
-  fill(255);
-  text("DICA",1190,552);
+  String[] linhas = {
+    "Você deve aceitar pedidos de",
+    "amizade de pessoas que",
+    "não conhece?"
+  };
+  desenharTelaPergunta(linhas);
 
   if (dicaAtual == 1) {
-    bX = -1050;
-    bY = 450;
+    xp = -1950; yp = 700;
     pushMatrix();
-    translate(1040, 385);
-    scale(0.70);
-    translate(-200, -300);
-    stroke(0); strokeWeight(2);
-    line(bX, bY-80, bX, bY-110);
-    fill(255, 0, 0); ellipse(bX, bY-115, 10, 10);
-    fill(150); stroke(0);
-    rect(bX-10, bY-45, 20, 10);
-    rect(bX-40, bY-90, 80, 50, 5);
-    fill(255, 0, 0); ellipse(bX-20, bY-70, 15, 15); ellipse(bX+20, bY-70, 15, 15);
-    fill(150); rect(bX-50, bY-35, 100, 100, 10);
-    fill(0, 200, 255); rect(bX-30, bY-15, 60, 30);
-    fill(150); rect(bX-70, bY-20, 20, 50); rect(bX+50, bY-20, 20, 50);
-    fill(255, 255, 0); ellipse(bX-15, bY, 10, 10);
-    fill(0, 255, 0); ellipse(bX+15, bY, 10, 10);
+    translate(1040, 20); scale(0.45); translate(-500, 0);
+    fill(101, 67, 33); stroke(0); rect(xp+445, yp+140, 110, 60);
+    fill(255, 224, 189); rect(xp+435, yp+180, 15, 30); rect(xp+550, yp+180, 15, 30);
+    square(xp+450, yp+150, 100);
+    fill(101, 67, 33); rect(xp+450, yp+150, 100, 20);
+    fill(0); rect(xp+470, yp+180, 10, 10); rect(xp+520, yp+180, 10, 10);
+    fill(0, 0, 255); rect(xp+425, yp+250, 150, 200);
+    fill(255, 224, 189); rect(xp+365, yp+250, 60, 200); rect(xp+575, yp+250, 60, 200);
+    fill(0, 255, 0); rect(xp+425, yp+450, 60, 120); rect(xp+515, yp+450, 60, 120);
     popMatrix();
 
-    fill(255);
-    stroke(0);
-    strokeWeight(4);
-    rect(15,280,300,100,20);
-
-    fill(0);
-    textSize(24);
-    text("Nem todo mundo",160,320);
-    text("é confiável!",160,360);
+    fill(255); stroke(0); strokeWeight(4);
+    rect(15, 280, 300, 100, 20);
+    fill(0); textSize(24); textAlign(CENTER);
+    text("Desconhecidos podem", 160, 320);
+    text("ser perigosos!", 160, 360);
   }
 }

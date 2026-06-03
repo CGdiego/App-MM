@@ -1,54 +1,16 @@
-// Pergunta 26
-
+// UI polida por Claude
 void p26() {
+  String[] linhas = {
+    "Você deve verificar se uma",
+    "notícia é verdadeira antes",
+    "de compartilhá-la?"
+  };
+  desenharTelaPergunta(linhas);
 
-// FUNDO AZUL
-  background(0,120,255);
-  desenharBarraProgresso();
-
-// TELA BRANCA NO MEIO
-  fill(255);
-  stroke(0);
-  strokeWeight(4);
-  rect(330,100,700,550,20);
-
-// TEXTOS
-  fill(0);
-  textAlign(CENTER);
-  textSize(40);
-  text("PERGUNTA " + perguntaAtual + ".", width/2, 180);
-  textSize(28);
-  text("Você deve verificar se uma",width/2,260);
-  text("notícia é verdadeira antes",width/2,300);
-  text("de compartilhá-la?",width/2,340);
-
-// BOTÃO SIM
-  fill(corSim);
-  rect(450,500,180,80,20);
-  fill(255);
-  textSize(32);
-  text("SIM",540,552);
-
-// BOTÃO NÃO
-  fill(corNao);
-  rect(730,500,180,80,20);
-  fill(255);
-  text("NÃO",820,552);
-
-// BOTÃO DICA
-  fill(corDica);
-  rect(1100,500,180,80,20);
-  fill(255);
-  text("DICA",1190,552);
-
-// TELA DICA
   if (dicaAtual == 1) {
-    // Criatura Azul
     xp = -200; yp = 200;
     pushMatrix();
-    translate(240, 280);
-    scale(0.40);
-    translate(-250, 0);
+    translate(240, 280); scale(0.40); translate(-250, 0);
     stroke(0); strokeWeight(10);
     fill(0, 0, 255); circle(xp+350, yp+150, 100); circle(xp+150, yp+150, 100);
     fill(0, 0, 200); circle(xp+350, yp+150, 50); circle(xp+150, yp+150, 50);
@@ -60,9 +22,9 @@ void p26() {
     popMatrix();
 
     fill(255); stroke(0); strokeWeight(4);
-    rect(15,280,300,100,20);
-    fill(0); textSize(24);
-    text("Fake news se",160,320);
-    text("espalham rápido!",160,360);
+    rect(15, 280, 300, 100, 20);
+    fill(0); textSize(24); textAlign(CENTER);
+    text("Fake news se", 160, 320);
+    text("espalham rápido!", 160, 360);
   }
 }

@@ -1,57 +1,111 @@
 // Feito por Diego
+// Polimento de UI por Claude
 
 void telaFinal() {
-  background(180);
+  // Fundo gradiente verde escuro
+  noStroke();
+  for (int i = 0; i < height; i++) {
+    float t = map(i, 0, height, 0, 1);
+    color c = lerpColor(color(0, 100, 40), color(0, 30, 15), t);
+    stroke(c);
+    line(0, i, width, i);
+  }
 
+  // Sombra do card
+  fill(0, 0, 0, 70);
+  noStroke();
+  rect(398, 68, 500, 610, 18);
+  // Card
   fill(255);
-  stroke(0,255,0);
-  strokeWeight(5);
-  rect(390, 60, 500, 600, 15);
+  stroke(180);
+  strokeWeight(2);
+  rect(390, 60, 500, 610, 15);
+
+  // Cabeçalho dourado
+  fill(200, 160, 0);
+  noStroke();
+  rect(390, 60, 500, 90, 15, 15, 0, 0);
 
   textAlign(CENTER, CENTER);
-  
-  // Título "PARABÉNS" estilizado com sombra
-  textSize(46);
-  fill(80, 0, 0);
-  text("PARABÉNS", 643, 183);  // sombra
-  fill(220, 0, 0);
-  text("PARABÉNS", 640, 180);
-  
-  stroke(220, 0, 0);
-  strokeWeight(3);
-  line(490, 210, 790, 210);
-  strokeWeight(1);
-  
-  fill(0);
-  textSize(20);
-  text("Você venceu!", 640, 260);
-  
-  fill(0);
-  textSize(20);
-  text("Você usou " + contagemDica + " dicas.", 640, 300);
-  
-  // Botão JOGAR JOGO FINAL
-  fill(corBotao);
-  stroke(0, 150, 50);
-  strokeWeight(2);
-  rect(490, 380, 300, 50, 10);
-  fill(255);
-  textSize(18);
-  text("JOGAR JOGO FINAL", 640, 405);
-  
-  // Botão JOGAR NOVAMENTE
-  boolean hoverNovamente = mouseX > 490 && mouseX < 790 && mouseY > 445 && mouseY < 490;
-  fill(hoverNovamente ? color(180, 100, 0) : color(230, 140, 0));
-  stroke(160, 80, 0);
-  strokeWeight(2);
-  rect(490, 445, 300, 50, 10);
-  fill(255);
-  textSize(18);
-  text("JOGAR NOVAMENTE", 640, 470);
-  
-  stroke(0);
-  strokeWeight(1);
+  fill(255, 240, 150);
+  textSize(17);
+  text("🏆  QUIZ CONCLUÍDO!", 640, 88);
 
+  // Título
+  fill(0, 0, 0, 50);
+  textSize(52);
+  text("PARABÉNS!", 643, 130);
+  fill(200, 140, 0);
+  text("PARABÉNS!", 640, 127);
+
+  // Divisor
+  stroke(220);
+  strokeWeight(1);
+  line(420, 165, 860, 165);
+  noStroke();
+
+  fill(40);
+  textSize(19);
+  text("Você respondeu todas as 10 perguntas!", 640, 200);
+
+  // Estatística de dicas
+  fill(90);
+  textSize(16);
+  text("Dicas utilizadas:", 640, 240);
+
+  // Badge de dicas
+  color badgeCol = contagemDica == 0 ? color(0, 180, 60) : (contagemDica <= 3 ? color(200, 140, 0) : color(180, 40, 40));
+  fill(badgeCol);
+  noStroke();
+  rect(580, 255, 120, 40, 10);
+  fill(255);
+  textSize(22);
+  text("" + contagemDica, 640, 275);
+
+  // Mensagem condicional
+  fill(60);
+  textSize(15);
+  if (contagemDica == 0) {
+    fill(0, 140, 50);
+    text("Perfeito! Nenhuma dica usada! 🌟", 640, 320);
+  } else if (contagemDica <= 3) {
+    fill(160, 110, 0);
+    text("Bom trabalho! Poucas dicas usadas. 👍", 640, 320);
+  } else {
+    fill(160, 40, 40);
+    text("Você conseguiu, mas estude mais! 📚", 640, 320);
+  }
+
+  // Divisor
+  stroke(220);
+  strokeWeight(1);
+  line(420, 345, 860, 345);
+  noStroke();
+
+  fill(50);
+  textSize(16);
+  text("Agora é hora do jogo final:", 640, 380);
+  fill(30);
+  textSize(14);
+  text("Use as setas do teclado para mover o Jotaro", 640, 408);
+  text("e alcançar o alvo!", 640, 428);
+
+  // Botão JOGAR JOGO FINAL
+  fill(0, 0, 0, 40);
+  noStroke();
+  rect(533, 483, 220, 55, 12);
+  fill(corBotao);
+  stroke(0, 100, 30);
+  strokeWeight(2);
+  rect(530, 480, 220, 55, 12);
+  fill(255);
+  noStroke();
+  textSize(18);
+  text("🎮  JOGAR JOGO FINAL", 640, 507);
+
+  noStroke();
+
+  // Personagens (mantidos originais)
   // 1. Creeper
   pushMatrix();
   translate(230, 65);
@@ -120,7 +174,7 @@ void telaFinal() {
   fill(0, 255, 0); rect(xp+425, yp+450, 60, 120); rect(xp+515, yp+450, 60, 120);
   popMatrix();
 
-  // 5. Robô do Reddit
+  // 5. Robô
   pushMatrix();
   translate(1040, 385);
   scale(0.70);

@@ -1,54 +1,16 @@
-// Pergunta 22
-
+// UI polida por Claude
 void p22() {
+  String[] linhas = {
+    "Você deve dizer seu",
+    "nome completo para",
+    "desconhecidos online?"
+  };
+  desenharTelaPergunta(linhas);
 
-// FUNDO AZUL
-  background(0,120,255);
-  desenharBarraProgresso();
-
-// TELA BRANCA NO MEIO
-  fill(255);
-  stroke(0);
-  strokeWeight(4);
-  rect(330,100,700,550,20);
-
-// TEXTOS
-  fill(0);
-  textAlign(CENTER);
-  textSize(40);
-  text("PERGUNTA " + perguntaAtual + ".", width/2, 180);
-  textSize(28);
-  text("Você deve dizer seu",width/2,260);
-  text("nome completo para",width/2,300);
-  text("desconhecidos online?",width/2,340);
-
-// BOTÃO SIM
-  fill(corSim);
-  rect(450,500,180,80,20);
-  fill(255);
-  textSize(32);
-  text("SIM",540,552);
-
-// BOTÃO NÃO
-  fill(corNao);
-  rect(730,500,180,80,20);
-  fill(255);
-  text("NÃO",820,552);
-
-// BOTÃO DICA
-  fill(corDica);
-  rect(1100,500,180,80,20);
-  fill(255);
-  text("DICA",1190,552);
-
-// TELA DICA
   if (dicaAtual == 1) {
-    // Mario
     xp = -250; yp = -150;
     pushMatrix();
-    translate(240, 460);
-    scale(0.45);
-    translate(-250, 0);
+    translate(240, 460); scale(0.45); translate(-250, 0);
     fill(227, 0, 4);
     rect(xp+160, yp+80, 180, 40); rect(xp+140, yp+120, 220, 30); rect(xp+190, yp+70, 120, 20);
     fill(90, 44, 0); rect(xp+150, yp+150, 60, 60); rect(xp+310, yp+150, 60, 60);
@@ -66,9 +28,9 @@ void p22() {
     popMatrix();
 
     fill(255); stroke(0); strokeWeight(4);
-    rect(15,280,300,100,20);
-    fill(0); textSize(24);
-    text("Seu nome completo",160,320);
-    text("é informação privada!",160,360);
+    rect(15, 280, 300, 100, 20);
+    fill(0); textSize(24); textAlign(CENTER);
+    text("Seu nome completo", 160, 320);
+    text("é informação privada!", 160, 360);
   }
 }

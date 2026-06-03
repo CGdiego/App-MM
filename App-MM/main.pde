@@ -1,5 +1,6 @@
 // Feito por Diego
 // Sistema de sorteio de 10 perguntas (de um pool de 30) adicionado por Claude
+// Polimento de UI/UX e barra de progresso adicionados por Claude
 
 import ddf.minim.*;
 
@@ -21,9 +22,6 @@ String emailDigitado = "";
 Minim minim;
 AudioPlayer player;
 
-AudioSample somAcerto;
-AudioSample somErro;
-
 // ---- GABARITO: resposta correta por pergunta (1=SIM, 2=NÃO) ----
 int[] gabarito = {
   2, 2, 2, 1, 2, 1, 2, 1, 2, 1,  // p01-p10
@@ -36,10 +34,6 @@ void setup(){
   minim = new Minim(this);
   player = minim.loadFile("smash_brawl.mp3");
   player.loop();
-  
-  somAcerto = minim.loadSample("acerto.wav", 512); // Nome do seu arquivo de acerto
-  somErro = minim.loadSample("erro.wav", 512);
-  
   jotaro = loadImage("jotaro.png");
   putin  = loadImage("putin.png");
   certificado = loadImage("certificado_maneiro.jpeg");
@@ -93,6 +87,142 @@ void chamarPerguntaAtual() {
   else if (id == 30) p30();
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// FUNÇÃO CENTRAL DE LAYOUT DAS PERGUNTAS
+// Chame no início de cada pXX(). Recebe as linhas do enunciado (até 4 linhas).
+// ─────────────────────────────────────────────────────────────────────────────
+void desenharTelaPergunta(String[] linhas) {
+
+  // --- FUNDO com gradiente simulado (faixas) ---
+  noStroke();
+  for (int i = 0; i < height; i++) {
+    float t = map(i, 0, height, 0, 1);
+    color c = lerpColor(color(0, 90, 210), color(0, 30, 100), t);
+    stroke(c);
+    line(0, i, width, i);
+  }
+  noStroke();
+
+  // --- CARD CENTRAL com sombra ---
+  // Sombra
+  fill(0, 0, 0, 60);
+  noStroke();
+  rect(338, 108, 700, 560, 22);
+  // Card branco
+  fill(255);
+  stroke(200);
+  strokeWeight(2);
+  rect(330, 100, 700, 560, 20);
+
+  // --- CABEÇALHO COLORIDO no card ---
+  fill(0, 90, 210);
+  noStroke();
+  rect(330, 100, 700, 80, 20, 20, 0, 0);
+  fill(255);
+  textAlign(CENTER, CENTER);
+  textSize(26);
+  text("PERGUNTA " + perguntaAtual + " de 10", width/2, 140);
+
+  // --- BARRA DE PROGRESSO ---
+  int barX = 360;
+  int barY = 190;
+  int barW = 640;
+  int barH = 18;
+  int progresso = passo; // quantas já foram respondidas (0 a 9)
+
+  // Trilho
+  fill(220);
+  noStroke();
+  rect(barX, barY, barW, barH, 9);
+
+  // Preenchimento
+  float barFill = map(progresso, 0, 10, 0, barW);
+  if (barFill > 0) {
+    fill(0, 200, 80);
+    rect(barX, barY, barFill, barH, 9);
+  }
+
+  // Bolinhas de etapa
+  for (int i = 0; i <= 10; i++) {
+    float bx = barX + map(i, 0, 10, 0, barW);
+    float by = barY + barH/2;
+    if (i < passo) {
+      fill(0, 160, 60); // já respondida
+    } else if (i == passo) {
+      fill(255, 200, 0); // atual
+    } else {
+      fill(200); // futura
+    }
+    noStroke();
+    ellipse(bx, by, 14, 14);
+  }
+
+  // Texto do progresso
+  fill(80);
+  textSize(13);
+  textAlign(RIGHT, CENTER);
+  text(passo + "/10 respondidas", barX + barW, barY + barH + 14);
+  textAlign(CENTER, CENTER);
+
+  // --- ENUNCIADO ---
+  fill(30);
+  textSize(27);
+  int baseY = 270;
+  int espacamento = 38;
+  for (int i = 0; i < linhas.length; i++) {
+    text(linhas[i], width/2, baseY + i * espacamento);
+  }
+
+  // --- BOTÃO SIM ---
+  // Sombra
+  fill(0, 0, 0, 40);
+  noStroke();
+  rect(453, 503, 180, 80, 20);
+  fill(corSim);
+  stroke(0, 120, 0);
+  strokeWeight(2);
+  rect(450, 500, 180, 80, 20);
+  fill(255);
+  noStroke();
+  textSize(30);
+  text("SIM", 540, 540);
+
+  // --- BOTÃO NÃO ---
+  fill(0, 0, 0, 40);
+  noStroke();
+  rect(733, 503, 180, 80, 20);
+  fill(corNao);
+  stroke(120, 0, 0);
+  strokeWeight(2);
+  rect(730, 500, 180, 80, 20);
+  fill(255);
+  noStroke();
+  textSize(30);
+  text("NÃO", 820, 540);
+
+  // --- BOTÃO DICA ---
+  fill(0, 0, 0, 40);
+  noStroke();
+  rect(1103, 503, 180, 80, 20);
+  fill(corDica);
+  stroke(140, 100, 0);
+  strokeWeight(2);
+  rect(1100, 500, 180, 80, 20);
+  fill(255);
+  noStroke();
+  textSize(30);
+  text("DICA", 1190, 540);
+
+  // Label embaixo do botão dica
+  fill(200);
+  textSize(13);
+  text("Dicas usadas: " + contagemDica, 1190, 595);
+
+  noStroke();
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 void draw(){
   if      (tela == 0)  { telaInicial(); }
   else if (tela == 1)  { chamarPerguntaAtual(); mouseOverSim(); mouseOverNao(); mouseOverDica(); }
@@ -108,7 +238,6 @@ void draw(){
   else if (tela == 12) { jogo(); }
   else if (tela == 13) { telaCertificado(); }
   else if (tela == 14) { telaVerCertificado(); }
-  else if (tela == 15) { telaCreditos(); }
   mouseOverJogar();
 }
 
@@ -156,69 +285,28 @@ void voltarInicio() {
 }
 
 void mousePressed(){
-  // Tela inicial (0)
   if (tela == 0) {
-    // Botão JOGAR
-    if (mouseX > 530 && mouseX < 750 && mouseY > 450 && mouseY < 500) {
-      somAcerto.trigger();
+    if (mouseX > 530 && mouseX < 750 && mouseY > 480 && mouseY < 535) {
       resetarQuiz();
       tela = 1;
     }
-    // Botão CRÉDITOS
-    if (mouseX > 555 && mouseX < 730 && mouseY > 515 && mouseY < 555) {
-      somAcerto.trigger();
-      tela = 15;
-    }
   }
-  // Tela de perguntas (1)
   else if (tela == 1) {
     int id = sequencia[passo];
     int resp = gabarito[id - 1];
-
     if (clicouSim()) {
-      if (resp == 1) { 
-        somAcerto.trigger(); 
-        avancarPergunta();
-      }
-        else voltarInicio();
+      if (resp == 1) avancarPergunta(); else voltarInicio();
     }
     if (clicouNao()) {
-      if (resp == 2) {
-        somAcerto.trigger(); // <--- Toca som de acerto se NÃO for correto
-        avancarPergunta();
-      } else {
-        somErro.trigger();   // <--- Toca som de erro se errar
-        voltarInicio();
-      }
-    }      
-if (clicouDica()) {
-  if (dicaAtual == 0) { 
-        somAcerto.trigger(); // <--- Opcional: toca um som sutil ao abrir a dica
-        contagemDica++; 
-        dicaAtual = 1; 
-      }
+      if (resp == 2) avancarPergunta(); else voltarInicio();
+    }
+    if (clicouDica()) {
+      if (dicaAtual == 0) { contagemDica++; dicaAtual = 1; }
     }
   }
-  // Tela final (11)
   else if (tela == 11) {
-    // Botão JOGAR JOGO FINAL
-    if (mouseX > 490 && mouseX < 790 && mouseY > 380 && mouseY < 430) {
-      resetarJogo();
-      tela = 12;
-    }
-    // Botão JOGAR NOVAMENTE
-    if (mouseX > 490 && mouseX < 790 && mouseY > 445 && mouseY < 490) {
-      resetarJogo();
-      resetarQuiz();
-      // Troca música de volta
-      player.close();
-      player = minim.loadFile("smash_brawl.mp3");
-      player.loop();
-      musicaTrocada = false;
-      tela = 1;
-    }
+    if (mouseX > 530 && mouseX < 750 && mouseY > 480 && mouseY < 535) { resetarJogo(); tela = 12; }
   }
-  // Tela certificado (13)
   else if (tela == 13) {
     if (mouseX > 543 && mouseX < 823 && mouseY > 450 && mouseY < 505) {
       resetarJogo(); resetarQuiz(); tela = 0;
@@ -227,23 +315,14 @@ if (clicouDica()) {
       tela = 14;
     }
   }
-  // Tela ver certificado (14)
   else if (tela == 14) {
     if (mouseX > 543 && mouseX < 823 && mouseY > 690 && mouseY < 745) {
       resetarJogo(); resetarQuiz(); tela = 0;
     }
   }
-  // Tela créditos (15)
-  else if (tela == 15) {
-    // Botão VOLTAR
-    if (mouseX > 543 && mouseX < 823 && mouseY > 645 && mouseY < 690) {
-      somErro.trigger();
-      tela = 0;
-    }
-  }
 }
 
-void keyPressed(){
+void keyPressed() {
   if (tela == 13) {
     if (key == BACKSPACE) {
       if (emailDigitado.length() > 0)
@@ -276,46 +355,8 @@ void mouseOverDica(){
 }
 
 void mouseOverJogar(){
-  if (mouseX > 530 && mouseX < 750 && mouseY > 450 && mouseY < 500)
+  if (mouseX > 530 && mouseX < 750 && mouseY > 480 && mouseY < 535)
     corBotao = verdeEscuro;
   else
     corBotao = verde;
-}
-
-void desenharBarraProgresso() {
-
-  float larguraBarra = 500;
-  float alturaBarra = 25;
-
-  float x = width/2 - larguraBarra/2;
-  float y = 50;
-
-  // Fundo
-  fill(220);
-  noStroke();
-  rect(x, y, larguraBarra, alturaBarra, 15);
-
-  // Progresso
-  fill(0, 200, 80);
-
-  float progresso = map(
-    perguntaAtual,
-    1,
-    10,
-    0,
-    larguraBarra
-  );
-
-  rect(x, y, progresso, alturaBarra, 15);
-
-  // Texto
-  fill(255);
-  textAlign(CENTER);
-  textSize(18);
-
-  text(
-    "Pergunta " + perguntaAtual + " de 10",
-    width/2,
-    y - 10
-  );
 }

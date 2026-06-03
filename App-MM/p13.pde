@@ -1,54 +1,16 @@
-// Pergunta 13
-
+// UI polida por Claude
 void p13() {
+  String[] linhas = {
+    "Usar a verificação em",
+    "duas etapas deixa suas",
+    "contas mais seguras?"
+  };
+  desenharTelaPergunta(linhas);
 
-// FUNDO AZUL
-  background(0,120,255);
-  desenharBarraProgresso();
-
-// TELA BRANCA NO MEIO
-  fill(255);
-  stroke(0);
-  strokeWeight(4);
-  rect(330,100,700,550,20);
-
-// TEXTOS
-  fill(0);
-  textAlign(CENTER);
-  textSize(40);
-  text("PERGUNTA " + perguntaAtual + ".", width/2, 180);
-  textSize(28);
-  text("Usar a verificação em",width/2,260);
-  text("duas etapas deixa suas",width/2,300);
-  text("contas mais seguras?",width/2,340);
-
-// BOTÃO SIM
-  fill(corSim);
-  rect(450,500,180,80,20);
-  fill(255);
-  textSize(32);
-  text("SIM",540,552);
-
-// BOTÃO NÃO
-  fill(corNao);
-  rect(730,500,180,80,20);
-  fill(255);
-  text("NÃO",820,552);
-
-// BOTÃO DICA
-  fill(corDica);
-  rect(1100,500,180,80,20);
-  fill(255);
-  text("DICA",1190,552);
-
-// TELA DICA
   if (dicaAtual == 1) {
-    // Steve
     xp = -1950; yp = 700;
     pushMatrix();
-    translate(1040, 20);
-    scale(0.45);
-    translate(-500, 0);
+    translate(1040, 20); scale(0.45); translate(-500, 0);
     fill(101, 67, 33); stroke(0); rect(xp+445, yp+140, 110, 60);
     fill(255, 224, 189); rect(xp+435, yp+180, 15, 30); rect(xp+550, yp+180, 15, 30);
     square(xp+450, yp+150, 100);
@@ -60,9 +22,9 @@ void p13() {
     popMatrix();
 
     fill(255); stroke(0); strokeWeight(4);
-    rect(15,280,300,100,20);
-    fill(0); textSize(24);
-    text("Duas etapas =",160,320);
-    text("dobro de proteção!",160,360);
+    rect(15, 280, 300, 100, 20);
+    fill(0); textSize(24); textAlign(CENTER);
+    text("Duas etapas =", 160, 320);
+    text("dobro de proteção!", 160, 360);
   }
 }
