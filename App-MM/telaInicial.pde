@@ -300,7 +300,7 @@ void telaCreditos() {
 
   String[] nomes = {
     "Daniel Godri Neto",
-    "Diego Fonseca de Oliveira Bonfim Soares",
+    "Diego Soares",
     "Gustavo Gomes Luciano",
     "João Victor Meiners Barboza",
     "Lucas Maximiano Rodrigues",

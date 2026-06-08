@@ -41,7 +41,7 @@ void telaFinal() {
   textAlign(CENTER, CENTER);
   fill(255, 240, 150);
   textSize(17);
-  text("QUIZ CONCLUÍDO!", 640, 88);
+  text("🏆  QUIZ CONCLUÍDO!", 640, 88);
 
   fill(0, 0, 0, 50);
   textSize(52);
