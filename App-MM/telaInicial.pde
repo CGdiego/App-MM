@@ -20,6 +20,127 @@ color corDica;
 color laranjaDica       = color(220, 140, 0);
 color laranjaDicaEscuro = color(140, 80, 0);
 
+color corCreditos;
+color azulCreditos       = color(60, 140, 220);
+color azulCreditosEscuro = color(20, 80, 160);
+
+// ─── PERSONAGENS DECORATIVOS (coordenadas fixas, sem xp/yp) ─────────────────
+
+void desenharCreeper(float px, float py, float sc) {
+  pushMatrix();
+  translate(px, py);
+  scale(sc);
+  // corpo centralizado em (0,0): largura 220, altura ~520
+  fill(0, 255, 0); stroke(0); strokeWeight(5);
+  rect(-110,   0, 220, 220); // cabeça
+  rect( -65, 220, 130, 300); // corpo
+  rect(-110, 460,  70, 100); // perna esq
+  rect(  40, 460,  70, 100); // perna dir
+  fill(0); stroke(0);
+  rect(-85,  48,  60, 60);   // olho esq
+  rect( 25,  48,  60, 60);   // olho dir
+  rect(-22, 110,  38, 70);   // nariz centro
+  rect(-60, 130,  38, 80);   // nariz esq
+  rect( 20, 130,  38, 80);   // nariz dir
+  popMatrix();
+}
+
+void desenharCriaturaAzul(float px, float py, float sc) {
+  pushMatrix();
+  translate(px, py);
+  scale(sc);
+  stroke(0); strokeWeight(10);
+  fill(0, 0, 255); circle( 100, -100, 100); circle(-100, -100, 100);
+  fill(0, 0, 200); circle( 100, -100,  50); circle(-100, -100,  50);
+  fill(0, 0, 255); circle(0, 0, 250);
+  fill(255); circle( 50, -25, 75); circle(-50, -25, 75);
+  fill(0);   circle( 50, -25, 25); circle(-50, -25, 25);
+  fill(255, 0, 0); rect(-50, 35, 100, 50);
+  strokeWeight(0); fill(255); rect(-45, 40, 90, 10);
+  popMatrix();
+}
+
+void desenharMario(float px, float py, float sc) {
+  pushMatrix();
+  translate(px, py);
+  scale(sc);
+  fill(227, 0, 4); rect(-90,-270,180,40); rect(-110,-230,220,30); rect(-60,-280,120,20);
+  fill(90, 44, 0); rect(-100,-200,60,60); rect(60,-200,60,60);
+  fill(232,177, 89); rect(-50,-200,110,110);
+  fill(5, 5, 5); rect(-20,-170,20,30); rect(20,-170,20,30);
+  fill(232,177, 89); rect(-5,-150,20,20);
+  fill(90, 44, 0); rect(-30,-110,100,20); rect(-40,-100,120,15);
+  fill(227, 0, 4); rect(-70,-90,150,90);
+  fill(0, 70,255); rect(-90,-50,80,110); rect(20,-50,80,110); rect(-70,-50,150,60);
+  fill(255,215, 0); rect(-40,-40,20,20); rect(30,-40,20,20);
+  fill(227, 0, 4); rect(-120,-80,40,80); rect(80,-80,40,80);
+  fill(232,177, 89); rect(-130,-10,50,40); rect(80,-10,50,40);
+  fill(0, 70,255); rect(-50,50,40,60); rect(10,50,40,60);
+  fill(180,114, 5); rect(-60,100,70,30); rect(0,100,70,30);
+  popMatrix();
+}
+
+void desenharSteve(float px, float py, float sc) {
+  pushMatrix();
+  translate(px, py);
+  scale(sc);
+  fill(101, 67, 33); stroke(0); rect(-55,-210,110,60);
+  fill(255,224,189); rect(-65,-170,15,30); rect(50,-170,15,30);
+  square(-50,-200,100);
+  fill(101, 67, 33); rect(-50,-200,100,20);
+  fill(0); rect(-30,-170,10,10); rect(20,-170,10,10);
+  fill(0, 0,255); rect(-75,-100,150,200);
+  fill(255,224,189); rect(-135,-100,60,200); rect(75,-100,60,200);
+  fill(0,255,  0); rect(-75,100,60,120); rect(15,100,60,120);
+  popMatrix();
+}
+
+void desenharRobo(float px, float py, float sc) {
+  pushMatrix();
+  translate(px, py);
+  scale(sc);
+  stroke(0); strokeWeight(2);
+  line(0,-130,0,-160);
+  fill(255,0,0); ellipse(0,-165,10,10);
+  fill(150); stroke(0);
+  rect(-10,-95,20,10);
+  rect(-40,-140,80,50,5);
+  fill(255,0,0); ellipse(-20,-120,15,15); ellipse(20,-120,15,15);
+  fill(150); rect(-50,-85,100,100,10);
+  fill(0,200,255); rect(-30,-65,60,30);
+  fill(150); rect(-70,-70,20,50); rect(50,-70,20,50);
+  fill(255,255,0); ellipse(-15,-50,10,10);
+  fill(0,255,  0); ellipse( 15,-50,10,10);
+  popMatrix();
+}
+
+void desenharFreddy(float px, float py, float sc) {
+  pushMatrix();
+  translate(px, py);
+  scale(sc);
+  fill(139, 69, 19);
+  ellipse(0,0,220,260);
+  ellipse(-110,-30,70,180); ellipse(110,-30,70,180);
+  ellipse(-50,120,70,160);  ellipse( 50,120,70,160);
+  fill(210,180,140); ellipse(0,10,130,170);
+  fill(139, 69, 19); ellipse(0,-250,250,250);
+  ellipse(-110,-300,90,90); ellipse(110,-300,90,90);
+  fill(230); ellipse(-110,-300,50,50); ellipse(110,-300,50,50);
+  fill(230); ellipse(0,-190,140,100);
+  fill(255); ellipse(-50,-270,45,45); ellipse(50,-270,45,45);
+  fill(0);   ellipse(-50,-270,20,20); ellipse(50,-270,20,20);
+  ellipse(0,-200,20,15);
+  noFill(); stroke(0); strokeWeight(3);
+  arc(0,-170,60,40,0,PI);
+  noStroke(); fill(20);
+  rect(-80,-370,160,20,10);
+  rect(-50,-430,100,70,10);
+  fill(200,0,0); rect(-50,-385,100,15);
+  popMatrix();
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 void telaInicial() {
   // Fundo gradiente azul escuro
   noStroke();
@@ -29,6 +150,14 @@ void telaInicial() {
     stroke(c);
     line(0, i, width, i);
   }
+
+  // Personagens decorativos — posições fixas, sem xp/yp
+  desenharCreeper(130, 130, 0.35);      // subido vs versão anterior
+  desenharCriaturaAzul(130, 420, 0.40);
+  desenharMario(130, 650, 0.45);
+  desenharSteve(1240, 200, 0.45);
+  desenharRobo(1240, 470, 0.70);
+  desenharFreddy(1240, 680, 0.35);
 
   // Sombra do card
   fill(0, 0, 0, 70);
@@ -50,20 +179,28 @@ void telaInicial() {
   textSize(17);
   text("BEM-VINDO AO", 640, 88);
 
-  // Título NUWS com sombra
-  fill(0, 0, 0, 60);
-  textSize(54);
-  text("NUWS", 643, 128);
+  // Título NUWS com fonte estilosa
+  PFont fonteTitle = createFont("Georgia", 60, true);
+  textFont(fonteTitle);
+  fill(255, 200, 0, 80);
+  textSize(60);
+  text("NUWS", 643, 130);
   fill(255);
-  text("NUWS", 640, 125);
+  textSize(60);
+  text("NUWS", 640, 127);
+  stroke(255, 200, 0, 180);
+  strokeWeight(3);
+  line(565, 155, 715, 155);
+  noStroke();
+
+  textFont(createFont("SansSerif", 19, true));
 
   // Divisor
   stroke(220);
   strokeWeight(1);
-  line(420, 165, 860, 165);
+  line(420, 170, 860, 170);
   noStroke();
 
-  // Texto descritivo
   fill(40);
   textSize(19);
   text("Aprenda a se proteger na internet!", 640, 205);
@@ -72,13 +209,11 @@ void telaInicial() {
   text("Responda 10 perguntas sobre segurança digital.", 640, 240);
   text("Erre uma e volte do zero. Boa sorte!", 640, 265);
 
-  // Divisor
   stroke(220);
   strokeWeight(1);
   line(420, 295, 860, 295);
   noStroke();
 
-  // Ícones de regras
   fill(0, 140, 60);
   textSize(15);
   text("✔  Acerte todas as 10 perguntas", 640, 330);
@@ -90,7 +225,6 @@ void telaInicial() {
   text("🎮  Complete o quiz e jogue o jogo final!", 640, 414);
 
   // Botão JOGAR
-  boolean hov = mouseX > 530 && mouseX < 750 && mouseY > 480 && mouseY < 535;
   fill(0, 0, 0, 40);
   noStroke();
   rect(533, 483, 220, 55, 12);
@@ -103,118 +237,120 @@ void telaInicial() {
   textSize(22);
   text("▶  JOGAR", 640, 507);
 
+  // Botão CRÉDITOS
+  fill(0, 0, 0, 40);
+  noStroke();
+  rect(533, 553, 220, 45, 12);
+  fill(corCreditos);
+  stroke(20, 80, 160);
+  strokeWeight(2);
+  rect(530, 550, 220, 45, 12);
+  fill(255);
+  noStroke();
+  textSize(17);
+  text("★  CRÉDITOS", 640, 572);
+
+  noStroke();
+}
+
+void telaCreditos() {
+  noStroke();
+  for (int i = 0; i < height; i++) {
+    float t = map(i, 0, height, 0, 1);
+    color c = lerpColor(color(0, 60, 160), color(0, 10, 50), t);
+    stroke(c);
+    line(0, i, width, i);
+  }
+
+  fill(0, 0, 0, 80);
+  noStroke();
+  rect(368, 68, 640, 640, 22);
+  fill(255);
+  stroke(180);
+  strokeWeight(2);
+  rect(360, 60, 640, 640, 18);
+
+  fill(180, 130, 0);
+  noStroke();
+  rect(360, 60, 640, 90, 18, 18, 0, 0);
+
+  fill(255, 220, 50);
+  textAlign(CENTER, CENTER);
+  textSize(28);
+  text("★", 400, 103);
+  text("★", 960, 103);
+
+  PFont fonteCred = createFont("Georgia", 42, true);
+  textFont(fonteCred);
+  fill(255, 230, 100);
+  textSize(42);
+  text("CRÉDITOS", 680, 103);
+
+  stroke(255, 200, 0, 150);
+  strokeWeight(2);
+  line(430, 150, 930, 150);
   noStroke();
 
-  // Personagens decorativos (mantidos originais)
-  // 1. Creeper
-  pushMatrix();
-  translate(230, 65);
-  scale(0.35);
-  translate(-214, 0);
-  fill(0, 255, 0); stroke(0); strokeWeight(5);
-  rect(xp+174, yp+250, 130, 300);
-  rect(xp+128, yp+80, 220, 220);
-  rect(xp+128, yp+500, 70, 100);
-  rect(xp+276, yp+500, 70, 100);
-  fill(0); stroke(0);
-  rect(xp+155, yp+128, 60, 60);
-  rect(xp+260, yp+128, 60, 60);
-  rect(xp+218, yp+190, 38, 70);
-  rect(xp+180, yp+210, 38, 80);
-  rect(xp+256, yp+210, 38, 80);
-  popMatrix();
+  textFont(createFont("SansSerif", 18, true));
 
-  // 2. Criatura Azul
-  pushMatrix();
-  translate(240, 280);
-  scale(0.40);
-  translate(-250, 0);
-  stroke(0); strokeWeight(10);
-  fill(0, 0, 255); circle(xp+350, yp+150, 100); circle(xp+150, yp+150, 100);
-  fill(0, 0, 200); circle(xp+350, yp+150, 50); circle(xp+150, yp+150, 50);
-  fill(0, 0, 255); circle(xp+250, yp+250, 250);
-  fill(255); circle(xp+300, yp+225, 75); circle(xp+200, yp+225, 75);
-  fill(0); circle(xp+300, yp+225, 25); circle(xp+200, yp+225, 25);
-  fill(255, 0, 0); rect(xp+200, yp+285, 100, 50);
-  strokeWeight(0); fill(255); rect(xp+205, yp+290, 90, 10);
-  popMatrix();
+  fill(100);
+  textSize(15);
+  textAlign(CENTER, CENTER);
+  text("Desenvolvido por:", 680, 185);
 
-  // 3. Mario
-  pushMatrix();
-  translate(240, 460);
-  scale(0.45);
-  translate(-250, 0);
-  fill(227, 0, 4); rect(xp+160, yp+80, 180, 40); rect(xp+140, yp+120, 220, 30); rect(xp+190, yp+70, 120, 20);
-  fill(90, 44, 0); rect(xp+150, yp+150, 60, 60); rect(xp+310, yp+150, 60, 60);
-  fill(232, 177, 89); rect(xp+200, yp+150, 110, 110);
-  fill(5, 5, 5); rect(xp+230, yp+180, 20, 30); rect(xp+270, yp+180, 20, 30);
-  fill(232, 177, 89); rect(xp+245, yp+200, 20, 20);
-  fill(90, 44, 0); rect(xp+220, yp+240, 100, 20); rect(xp+210, yp+250, 120, 15);
-  fill(227, 0, 4); rect(xp+180, yp+260, 150, 90);
-  fill(0, 70, 255); rect(xp+160, yp+300, 80, 110); rect(xp+270, yp+300, 80, 110); rect(xp+180, yp+300, 150, 60);
-  fill(255, 215, 0); rect(xp+210, yp+310, 20, 20); rect(xp+280, yp+310, 20, 20);
-  fill(227, 0, 4); rect(xp+130, yp+270, 40, 80); rect(xp+330, yp+270, 40, 80);
-  fill(232, 177, 89); rect(xp+120, yp+340, 50, 40); rect(xp+330, yp+340, 50, 40);
-  fill(0, 70, 255); rect(xp+200, yp+400, 40, 60); rect(xp+260, yp+400, 40, 60);
-  fill(180, 114, 5); rect(xp+190, yp+450, 70, 30); rect(xp+250, yp+450, 70, 30);
-  popMatrix();
+  String[] nomes = {
+    "Daniel Godri Neto",
+    "Diego Fonseca de Oliveira Bonfim Soares",
+    "Gustavo Gomes Luciano",
+    "João Victor Meiners Barboza",
+    "Lucas Maximiano Rodrigues",
+    "Mateus Weiss Medeiros"
+  };
 
-  // 4. Steve
-  pushMatrix();
-  translate(1040, 20);
-  scale(0.45);
-  translate(-500, 0);
-  fill(101, 67, 33); stroke(0); rect(xp+445, yp+140, 110, 60);
-  fill(255, 224, 189); rect(xp+435, yp+180, 15, 30); rect(xp+550, yp+180, 15, 30);
-  square(xp+450, yp+150, 100);
-  fill(101, 67, 33); rect(xp+450, yp+150, 100, 20);
-  fill(0); rect(xp+470, yp+180, 10, 10); rect(xp+520, yp+180, 10, 10);
-  fill(0, 0, 255); rect(xp+425, yp+250, 150, 200);
-  fill(255, 224, 189); rect(xp+365, yp+250, 60, 200); rect(xp+575, yp+250, 60, 200);
-  fill(0, 255, 0); rect(xp+425, yp+450, 60, 120); rect(xp+515, yp+450, 60, 120);
-  popMatrix();
+  int baseY = 240;
+  int espacamento = 68;
 
-  // 5. Robô
-  pushMatrix();
-  translate(1040, 385);
-  scale(0.70);
-  translate(-200, -300);
-  stroke(0); strokeWeight(2);
-  line(bX, bY-80, bX, bY-110);
-  fill(255, 0, 0); ellipse(bX, bY-115, 10, 10);
-  fill(150); stroke(0);
-  rect(bX-10, bY-45, 20, 10);
-  rect(bX-40, bY-90, 80, 50, 5);
-  fill(255, 0, 0); ellipse(bX-20, bY-70, 15, 15); ellipse(bX+20, bY-70, 15, 15);
-  fill(150); rect(bX-50, bY-35, 100, 100, 10);
-  fill(0, 200, 255); rect(bX-30, bY-15, 60, 30);
-  fill(150); rect(bX-70, bY-20, 20, 50); rect(bX+50, bY-20, 20, 50);
-  fill(255, 255, 0); ellipse(bX-15, bY, 10, 10);
-  fill(0, 255, 0); ellipse(bX+15, bY, 10, 10);
-  popMatrix();
+  for (int i = 0; i < nomes.length; i++) {
+    int cy = baseY + i * espacamento;
+    if (i > 0) {
+      stroke(230);
+      strokeWeight(1);
+      line(410, cy - 20, 950, cy - 20);
+      noStroke();
+    }
+    fill(0, 90, 210);
+    noStroke();
+    ellipse(415, cy + 10, 30, 30);
+    fill(255);
+    textSize(14);
+    text(str(i + 1), 415, 10 + cy);
+    fill(30);
+    textSize(18);
+    textAlign(LEFT, CENTER);
+    text(nomes[i], 440, cy + 10);
+    textAlign(CENTER, CENTER);
+  }
 
-  // 6. Freddy
-  pushMatrix();
-  translate(1040, 600);
-  scale(0.35);
-  translate(-300, -450);
-  fill(139, 69, 19);
-  ellipse(xp+300, yp+500, 220, 260);
-  ellipse(xp+190, yp+470, 70, 180); ellipse(xp+410, yp+470, 70, 180);
-  ellipse(xp+250, yp+620, 70, 160); ellipse(xp+350, yp+620, 70, 160);
-  fill(210, 180, 140); ellipse(xp+300, yp+510, 130, 170);
-  fill(139, 69, 19); ellipse(xp+300, yp+250, 250, 250);
-  ellipse(xp+190, yp+200, 90, 90); ellipse(xp+410, yp+200, 90, 90);
-  fill(230); ellipse(xp+190, yp+200, 50, 50); ellipse(xp+410, yp+200, 50, 50);
-  fill(230); ellipse(xp+300, yp+310, 140, 100);
-  fill(255); ellipse(xp+250, yp+230, 45, 45); ellipse(xp+350, yp+230, 45, 45);
-  fill(0); ellipse(xp+250, yp+230, 20, 20); ellipse(xp+350, yp+230, 20, 20);
-  ellipse(xp+300, yp+300, 20, 15);
-  noFill(); stroke(0); strokeWeight(3);
-  arc(xp+300, yp+330, 60, 40, 0, PI);
-  noStroke(); fill(20);
-  rect(xp+220, yp+130, 160, 20, 10);
-  rect(xp+250, yp+70, 100, 70, 10);
-  fill(200, 0, 0); rect(xp+250, yp+115, 100, 15);
-  popMatrix();
+  stroke(230);
+  strokeWeight(1);
+  line(410, 660, 950, 660);
+  noStroke();
+  fill(150);
+  textSize(13);
+  text("NUWS  •  Segurança Digital", 680, 680);
+
+  boolean hovVoltar = mouseX > 580 && mouseX < 780 && mouseY > 695 && mouseY < 740;
+  fill(0, 0, 0, 40);
+  noStroke();
+  rect(583, 698, 200, 45, 12);
+  fill(hovVoltar ? color(0, 70, 160) : color(0, 90, 210));
+  stroke(0, 60, 140);
+  strokeWeight(2);
+  rect(580, 695, 200, 45, 12);
+  fill(255);
+  noStroke();
+  textSize(18);
+  text("← VOLTAR", 680, 717);
+
+  noStroke();
 }

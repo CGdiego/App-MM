@@ -224,10 +224,11 @@ void desenharTelaPergunta(String[] linhas) {
 // ─────────────────────────────────────────────────────────────────────────────
 
 void draw(){
-  if      (tela == 0)  { telaInicial(); }
+  if      (tela == 0)  { telaInicial(); mouseOverCreditos(); }
   else if (tela == 1)  { chamarPerguntaAtual(); mouseOverSim(); mouseOverNao(); mouseOverDica(); }
   else if (tela == 11) {
     telaFinal();
+    mouseOverJogarNovamente();
     if (!musicaTrocada) {
       player.close();
       player = minim.loadFile("giorno_theme.mp3");
@@ -238,6 +239,7 @@ void draw(){
   else if (tela == 12) { jogo(); }
   else if (tela == 13) { telaCertificado(); }
   else if (tela == 14) { telaVerCertificado(); }
+  else if (tela == 15) { telaCreditos(); }
   mouseOverJogar();
 }
 
@@ -254,7 +256,12 @@ void resetarQuiz() {
   perguntaAtual = 1;
   dicaAtual = 0;
   contagemDica = 0;
-  musicaTrocada = false;
+  if (musicaTrocada) {
+    player.close();
+    player = minim.loadFile("smash_brawl.mp3");
+    player.loop();
+    musicaTrocada = false;
+  }
   sortearPerguntas();
 }
 
@@ -290,6 +297,9 @@ void mousePressed(){
       resetarQuiz();
       tela = 1;
     }
+    if (mouseX > 530 && mouseX < 750 && mouseY > 550 && mouseY < 595) {
+      tela = 15;
+    }
   }
   else if (tela == 1) {
     int id = sequencia[passo];
@@ -305,7 +315,8 @@ void mousePressed(){
     }
   }
   else if (tela == 11) {
-    if (mouseX > 530 && mouseX < 750 && mouseY > 480 && mouseY < 535) { resetarJogo(); tela = 12; }
+    if (mouseX > 530 && mouseX < 750 && mouseY > 445 && mouseY < 500) { resetarJogo(); tela = 12; }
+    if (mouseX > 530 && mouseX < 750 && mouseY > 515 && mouseY < 565) { resetarJogo(); resetarQuiz(); tela = 1; }
   }
   else if (tela == 13) {
     if (mouseX > 543 && mouseX < 823 && mouseY > 450 && mouseY < 505) {
@@ -318,6 +329,11 @@ void mousePressed(){
   else if (tela == 14) {
     if (mouseX > 543 && mouseX < 823 && mouseY > 690 && mouseY < 745) {
       resetarJogo(); resetarQuiz(); tela = 0;
+    }
+  }
+  else if (tela == 15) {
+    if (mouseX > 580 && mouseX < 780 && mouseY > 695 && mouseY < 740) {
+      tela = 0;
     }
   }
 }
@@ -359,4 +375,18 @@ void mouseOverJogar(){
     corBotao = verdeEscuro;
   else
     corBotao = verde;
+}
+
+void mouseOverCreditos(){
+  if (mouseX > 530 && mouseX < 750 && mouseY > 550 && mouseY < 595)
+    corCreditos = azulCreditosEscuro;
+  else
+    corCreditos = azulCreditos;
+}
+
+void mouseOverJogarNovamente(){
+  if (mouseX > 530 && mouseX < 750 && mouseY > 515 && mouseY < 565)
+    corJogarNovamente = verdeJNEscuro;
+  else
+    corJogarNovamente = verdeJN;
 }
